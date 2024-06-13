@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+html {
+    overflow-y: scroll;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+
+  }
+  body {
+    font-family: "Montserrat", sans-serif;
+
+    overflow-y: visible;
+    position: relative;
+    overflow-x: hidden;
+  }
+  html,
+  body {
+    margin: 0;
+  }
+
+  .pin-spacer > div{
+    max-width: 3000px !important;
+    width: 3000px !important;
+  }
+  section{
+    margin-bottom: 80px;
+  }
+
+ 

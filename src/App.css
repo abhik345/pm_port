@@ -1,0 +1,44 @@
+
+.cite-with-line::before {
+    content: '';
+    display: inline-block;
+    width: 100px;
+    height: 1px;
+    background-color: white;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.char{
+    font-size: 48px;
+    line-height: 1;
+}
+
+.heading-with-line::before {
+    content: '';
+    display: inline-block;
+    width: 70px;
+    height: 1px;
+    background-color: #000;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.glass-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.178); 
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+
+  
