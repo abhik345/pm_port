@@ -4,6 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 
+
+
 const About = () => {
     const headRef1 = useRef();
     const headRef2 = useRef();
@@ -11,19 +13,30 @@ const About = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     useGSAP(() => {
-        gsap.from(headRef1.current, {
-            x: -100,
-            opacity: 0,
-            duration: 2,
-            delay: 1,
-        }); 
-        gsap.from(headRef2.current, {
-            x: -100,
-            opacity: 0,
-            duration: 2,
-            delay: 1,
-        }); 
-    });
+      gsap.from(headRef1.current, {
+        scrollTrigger: {
+          trigger: headRef1.current,
+          start: "top 80%",
+          end: "bottom 60%",
+          scrub: 1,
+        },
+        x: -1000,
+        opacity: 1,
+        duration: 3,
+      });
+  
+      gsap.from(headRef2.current, {
+        scrollTrigger: {
+          trigger: headRef2.current,
+          start: "top 80%",
+          end: "bottom 60%",
+          scrub: 1,
+        },
+        x: -100,
+        opacity: 1,
+        duration: 2,
+      });
+    })
 
     const awards = [
         { title: '9th International Biennial Sweden', date: 'August 2020' },

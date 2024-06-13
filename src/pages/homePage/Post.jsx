@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
@@ -10,27 +9,41 @@ import post2 from "/assets/post2.jpg";
 import post3 from "/assets/post3.jpg";
 import post4 from "/assets/post4.jpg";
 import post5 from "/assets/post5.jpg";
+import { useGSAP } from "@gsap/react";
 
 const Post = () => {
-  const headRef1 = useRef();
-  const headRef2 = useRef();
+  const headRef1 = useRef(null);
+  const headRef2 = useRef(null);
 
-  gsap.registerPlugin(ScrollTrigger);
+
+    gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
     gsap.from(headRef1.current, {
-      x: -100,
-      opacity: 0,
-      duration: 2,
-      delay: 1,
+      scrollTrigger: {
+        trigger: headRef1.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -1000,
+      opacity: 1,
+      duration: 3,
     });
+
     gsap.from(headRef2.current, {
+      scrollTrigger: {
+        trigger: headRef2.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
       x: -100,
-      opacity: 0,
+      opacity: 1,
       duration: 2,
-      delay: 1,
     });
-  });
+  })
+
   return (
     <>
       <section>
@@ -59,99 +72,19 @@ const Post = () => {
           }}
           loop={true}
           modules={[Autoplay]}
-          className="mySwiper "
+          className="mySwiper"
         >
-          <SwiperSlide>
-            <div className="overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post1}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post2}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post3}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post4}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post5}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post1}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post1}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post1}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post1}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  overflow-hidden ">
-              <img
-                className="w-full h-[400px]"
-                src={post1}
-                alt="Sunset in the mountains"
-              />
-            </div>
-          </SwiperSlide>
+          {[post1, post2, post3, post4, post5].map((post, index) => (
+            <SwiperSlide key={index}>
+              <div className="overflow-hidden">
+                <img
+                  className="w-full h-[400px]"
+                  src={post}
+                  alt={`Post ${index + 1}`}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </section>
     </>

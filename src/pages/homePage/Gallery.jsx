@@ -9,12 +9,45 @@ import sirImage5 from "/assets/sir1.jpg";
 import sirImage6 from "/assets/sir2.jpg";
 import sirImage7 from "/assets/sir3.jpg";
 import sirImage8 from "/assets/sir4.jpg";
+import { useGSAP } from "@gsap/react";
+
 
 const Gallery = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const component = useRef();
   const slider = useRef();
+
+  const headRef1 = useRef(null);
+  const headRef2 = useRef(null);
+
+
+
+  useGSAP(() => {
+    gsap.from(headRef1.current, {
+      scrollTrigger: {
+        trigger: headRef1.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -1000,
+      opacity: 1,
+      duration: 3,
+    });
+
+    gsap.from(headRef2.current, {
+      scrollTrigger: {
+        trigger: headRef2.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -100,
+      opacity: 1,
+      duration: 2,
+    });
+  })
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -38,10 +71,10 @@ const Gallery = () => {
     <section>
       <div className="container ml-[156px]" ref={component}>
         <div className="">
-          <h3 className="heading-with-line text-2xl font-medium mb-2">
+          <h3 ref={headRef1} className="heading-with-line text-2xl font-medium mb-2">
             Gallery
           </h3>
-          <h2 className="text-6xl font-bold mb-4">
+          <h2 ref={headRef2} className="text-6xl font-bold mb-4">
             <span className="text-gray-600">Explore </span>
             <span className="text-black">My Gallery</span>
           </h2>
