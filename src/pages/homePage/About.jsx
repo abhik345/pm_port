@@ -66,7 +66,7 @@ const About = () => {
               alt="Award"
               className="w-2/3 h-auto rounded-lg"
             />
-            <div className="absolute  xl:bottom-10 xl:left-48 bg-white rounded-md shadow-lg p-4 w-3/5">
+            <div className="absolute  xl:bottom-10 xl:left-48 2xl:-bottom-14 2xl:left-48 bg-white rounded-md shadow-lg p-4 w-3/5">
               <blockquote className=" mt-4 text-lg italic">
                 <svg
                   className="absolute -top-6 -left-3 sm:-left-6 md:-left-8 lg:-left-14 xl:-left-11 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
