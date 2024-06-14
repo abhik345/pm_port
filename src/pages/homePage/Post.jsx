@@ -9,14 +9,15 @@ import post2 from "/assets/post2.jpg";
 import post3 from "/assets/post3.jpg";
 import post4 from "/assets/post4.jpg";
 import post5 from "/assets/post5.jpg";
+import post6 from "/assets/post6.png";
+import post7 from "/assets/post7.png";
 import { useGSAP } from "@gsap/react";
 
 const Post = () => {
   const headRef1 = useRef(null);
   const headRef2 = useRef(null);
 
-
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
     gsap.from(headRef1.current, {
@@ -42,7 +43,7 @@ const Post = () => {
       opacity: 1,
       duration: 2,
     });
-  })
+  });
 
   return (
     <>
@@ -74,17 +75,19 @@ const Post = () => {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {[post1, post2, post3, post4, post5].map((post, index) => (
-            <SwiperSlide key={index}>
-              <div className="overflow-hidden">
-                <img
-                  className="w-full h-[400px]"
-                  src={post}
-                  alt={`Post ${index + 1}`}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+          {[post1, post2, post3, post4, post5, post6, post7].map(
+            (post, index) => (
+              <SwiperSlide key={index}>
+                <div className="overflow-hidden">
+                  <img
+                    className="w-full h-[400px]"
+                    src={post}
+                    alt={`Post ${index + 1}`}
+                  />
+                </div>
+              </SwiperSlide>
+            )
+          )}
         </Swiper>
       </section>
     </>

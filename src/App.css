@@ -49,3 +49,13 @@
     align-items: center;
   }
   
+
+  .about-with-line::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background-color: #000;
+    margin-right: 8px;
+    vertical-align: middle;
+}
