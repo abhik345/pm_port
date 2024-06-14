@@ -92,7 +92,7 @@ const Brands = () => {
           </div>
           {brands?.map((item, index) => (
             <div
-              className="bg-inherit flex items-center justify-center "
+              className="bg-inherit flex items-center justify-center border-[0.5px] border-opacity-20 border-white rounded-xl"
               key={index}
             >
               <div className=" h-72 w-80 rounded-lg p-4 flex flex-col justify-between  cursor-pointer">
