@@ -33,7 +33,7 @@ const brands = [
   {
     name: "Republic Of Influencers",
     logo: "/assets/roi.png",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Lorem ipsum dolor sit amet",
   },
 ];
 
@@ -100,7 +100,7 @@ const Brands = () => {
                   <div className="h-22 w-24">
                     <img src={item.logo} alt={item.name} />
                   </div>
-                  <h2 className="text-white text-xl font-semibold mt-4">
+                  <h2 className="text-white text-[20px] font-semibold mt-4">
                     {item.name}
                   </h2>
                   <p className="text-white mt-2">{item.description}</p>
