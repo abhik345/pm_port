@@ -80,7 +80,7 @@ const Post = () => {
               <SwiperSlide key={index}>
                 <div className="overflow-hidden">
                   <img
-                    className="w-full h-[400px]"
+                    className="w-full h-[400px] object-cover"
                     src={post}
                     alt={`Post ${index + 1}`}
                   />

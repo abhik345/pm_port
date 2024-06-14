@@ -15,7 +15,6 @@ html {
   }
   body {
     font-family: "Montserrat", sans-serif;
-
     overflow-y: visible;
     position: relative;
     overflow-x: hidden;
@@ -33,4 +32,6 @@ html {
     margin-bottom: 80px;
   }
 
- 
+  /* .pin-spacer{
+    padding: 50% !important;
+  } */
