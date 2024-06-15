@@ -4,6 +4,7 @@ import {About} from "./About.jsx";
 import Post from "./Post.jsx";
 import Gallery from "./Gallery.jsx";
 import Brands from "./Brands.jsx";
+import ContactMe from "./ContactMe.jsx";
 
 
 const Home = () => {
@@ -15,7 +16,7 @@ const Home = () => {
             <Post/>
             <Brands/>
             <Gallery/>
-            
+            <ContactMe/>
         </Layout>
         </>
     )
