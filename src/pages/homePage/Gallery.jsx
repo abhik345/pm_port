@@ -93,7 +93,7 @@ const Gallery = () => {
                     <div className="glass-button hidden group-hover:flex items-center justify-center">
                       <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-12 w-12 text-white"
+                          className="h-12 w-12 text-slate-200"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                       >

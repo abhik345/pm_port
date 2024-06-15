@@ -49,7 +49,7 @@ const ContactMe = () => {
   }, []);
 
   return (
-    <div className="relative mt-96 bg-[#272727] text-white">
+    <div className="relative mt-24 sm:mt-32 md:mt-48 lg:mt-64 xl:mt-72 2xl:mt-96 bg-[#272727] text-white">
       <div className="grid grid-cols-2 h-full">
         <div className="p-8">
           <div>
