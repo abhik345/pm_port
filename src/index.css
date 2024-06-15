@@ -32,6 +32,42 @@ html {
     margin-bottom: 80px;
   }
 
-  /* .pin-spacer{
-    padding: 50% !important;
-  } */
+  .contact-me {
+    margin-top: 8rem; 
+  }
+  
+  @media (min-width: 640px) {
+    /* Small (sm) */
+    .contact-me {
+      margin-top: 8rem; /* 128px */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    /* Medium (md) */
+    .contact-me {
+      margin-top: 12rem; /* 192px */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    /* Large (lg) */
+    .contact-me {
+      margin-top: 24rem; /* 384px */
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    /* Extra Large (xl) */
+    .contact-me {
+      margin-top: 24rem; /* 512px */
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    /* 2X Extra Large (2xl) */
+    .contact-me {
+      margin-top: 24rem; /* 512px */
+    }
+  }
+  

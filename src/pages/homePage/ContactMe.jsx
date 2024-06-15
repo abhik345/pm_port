@@ -49,15 +49,15 @@ const ContactMe = () => {
   }, []);
 
   return (
-    <div className="relative mt-24 sm:mt-32 md:mt-48 lg:mt-64 xl:mt-72 2xl:mt-96 bg-[#272727] text-white">
-      <div className="grid grid-cols-2 h-full">
+    <div className="relative bg-[#272727] text-white contact-me">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
         <div className="p-8">
           <div>
             <h3
               ref={headRef1}
               className="cite-with-line text-2xl font-medium mb-2"
             >
-              Gallery
+              Contact Us
             </h3>
             <h2 ref={headRef2} className="text-5xl font-bold mb-4">
               <span className="text-gray-600">Lets</span>
