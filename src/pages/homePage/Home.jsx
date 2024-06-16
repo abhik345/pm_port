@@ -5,6 +5,7 @@ import Post from "./Post.jsx";
 import Gallery from "./Gallery.jsx";
 import Brands from "./Brands.jsx";
 import ContactMe from "./ContactMe.jsx";
+import Projects from "./Projects.jsx";
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
         <Layout>
             <Banner/>
             <About/>
+            <Projects/>
             <Post/>
             <Brands/>
             <Gallery/>
