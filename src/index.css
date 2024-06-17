@@ -33,41 +33,42 @@ html {
   }
 
   .contact-me {
-    margin-top: 8rem; 
+    margin-top: 128px !important; 
   }
   
-  @media (min-width: 640px) {
-    /* Small (sm) */
+  @media only screen and (min-width: 640px) {
     .contact-me {
-      margin-top: 8rem; /* 128px */
+      margin-top: 128px !important; 
     }
   }
   
-  @media (min-width: 768px) {
-    /* Medium (md) */
+  @media only screen and (min-width: 768px) {
     .contact-me {
-      margin-top: 12rem; /* 192px */
+      margin-top: 192px !important; 
     }
   }
   
-  @media (min-width: 1024px) {
-    /* Large (lg) */
+  @media only screen and (min-width: 1024px) {
     .contact-me {
-      margin-top: 24rem; /* 384px */
+      margin-top: 384px !important;
     }
   }
   
-  @media (min-width: 1280px) {
-    /* Extra Large (xl) */
+  @media only screen and (min-width: 1280px) {
     .contact-me {
-      margin-top: 24rem; /* 512px */
+      margin-top: 384px !important; 
     }
   }
   
-  @media (min-width: 1536px) {
-    /* 2X Extra Large (2xl) */
+  @media only screen and (min-width: 1536px) {
+
     .contact-me {
-      margin-top: 24rem; /* 512px */
+      margin-top: 384px !important;
     }
   }
   
+  @media only screen and (min-width: 1919px) {
+    .contact-me {
+      margin-top: 384px !important;
+    }
+  }
