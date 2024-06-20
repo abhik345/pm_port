@@ -79,7 +79,7 @@ function Projects() {
                 Projects
               </h3>
               <h2 ref={headRef2} className="main-heading text-[50px] font-bold mb-4">
-                <span className="text-[#959595]">Let's</span>
+                <span className="text-[#959595]">Lets</span>
                 <span className="text-white"> Empower Business Growth</span>
               </h2>
             </div>
@@ -115,9 +115,7 @@ function Projects() {
                   <li className="ml-5">Understanding the Strategic Road Map</li>
                 </ul>
               </div>
-              <button className="mt-4 bg-[#DCA514] text-white py-2 px-4 rounded-full font-normal text-[16px] w-1/3">
-                Download PDF
-              </button>
+              
             </div>
             <div className="details mt-40 h-[60vh] flex flex-col justify-center w-full ml-auto text-white text-3xl font-extrabold">
               <p className="mt-4 text-xl font-semibold underline underline-offset-8">Ride the Digital Wave</p>
@@ -151,9 +149,7 @@ function Projects() {
                   <li className="ml-5">Understanding the Strategic Road Map</li>
                 </ul>
               </div>
-              <button className="mt-4 bg-[#DCA514] text-white py-2 px-4 rounded-full font-normal text-[16px] w-1/3">
-                Download PDF
-              </button>
+             
             </div>
             <div className="details mt-40 mb-20 h-[60vh] flex flex-col justify-center w-full ml-auto text-white text-3xl font-extrabold">
               <p className="mt-4 text-xl font-semibold underline underline-offset-8">Ride the Digital Wave</p>
@@ -187,9 +183,7 @@ function Projects() {
                   <li className="ml-5">Understanding the Strategic Road Map</li>
                 </ul>
               </div>
-              <button className="mt-4 bg-[#DCA514] text-white py-2 px-4 rounded-full font-normal text-[16px] w-1/3">
-                Download PDF
-              </button>
+              
             </div>
           </div>
           <br />
