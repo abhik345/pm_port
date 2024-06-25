@@ -3,37 +3,44 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const brands = [
   {
     name: "Kreative Machinez",
     logo: "/assets/kreative.png",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    link: "https://www.kreativemachinez.com/",
   },
   {
     name: "Pramotivation",
     logo: "/assets/pmotivation.png",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    link: "https://www.pramotivation.com/",
   },
   {
     name: "Sahi Hai Bazaar",
     logo: "/assets/sahihaibazar.png",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    link: "https://sahihaibazaar.com/",
   },
   {
     name: "Track Your Ads",
     logo: "/assets/track.png",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    link: "https://brandfront.kreativemachinez.in/",
   },
   {
     name: "Pukaar",
     logo: "/assets/pukar.png",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    link: "https://1techteam.com/html/pukaar/",
   },
   {
     name: "Republic Of Influencers",
     logo: "/assets/roi.png",
     description: "Lorem ipsum dolor sit amet",
+    link: "https://republicofinfluencers.in/",
   },
 ];
 
@@ -91,11 +98,13 @@ const Brands = () => {
             </div>
           </div>
           {brands?.map((item, index) => (
-            <div
+            <Link
+              to={item.link}
+              target="_blank"
               className="bg-inherit flex items-center justify-center border-[0.5px] border-opacity-20 border-white rounded-xl"
               key={index}
             >
-              <div className=" h-72 w-80 rounded-lg p-4 flex flex-col justify-between  cursor-pointer">
+              <div className="h-72 w-80 rounded-lg p-4 flex flex-col justify-between cursor-pointer darksoul-card3">
                 <div>
                   <div className="h-22 w-24">
                     <img src={item.logo} alt={item.name} />
@@ -106,12 +115,12 @@ const Brands = () => {
                   <p className="text-white mt-2">{item.description}</p>
                 </div>
                 <div className="flex justify-end">
-                  <button className="bg-white text-black rounded-full hover:bg-gray-200 p-3">
+                  <button className="bg-white text-black rounded-full hover:bg-gray-200 p-3 chevron-button">
                     <ChevronRight />
                   </button>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

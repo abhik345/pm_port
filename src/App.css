@@ -65,3 +65,34 @@
   color: #fff;
 }
 
+/* Custom styles for the chevron button hover effect */
+.chevron-button {
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.chevron-button:hover {
+  background-color: #e2e8f0; /* Tailwind's gray-200 */
+  transform: translateX(5px); /* Slight movement to the right */
+}
+
+/* Custom styles for darksoul card hover effect */
+.darksoul-card3 {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.darksoul-card3:hover {
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.circle3 {
+  transition: all 0.5s;
+}
+
+.darksoul-card3:hover .circle3 {
+  margin-top: 0;
+  background-color: #fecaca; /* Tailwind's red-200 */
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+}

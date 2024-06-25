@@ -1,17 +1,60 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import post1 from "/assets/post1.jpg";
-import post2 from "/assets/post2.jpg";
-import post3 from "/assets/post3.jpg";
-import post4 from "/assets/post4.jpg";
-import post5 from "/assets/post5.jpg";
-import post6 from "/assets/post6.png";
-import post7 from "/assets/post7.png";
 import { useGSAP } from "@gsap/react";
+import PropTypes from "prop-types";
+import linkedinIcon from "/assets/linkedin.svg";
+import facebookIcon from "/assets/fb.svg";
+import instagramIcon from "/assets/insta.svg";
+import { Link } from "react-router-dom";
+
+const postsData = [
+  {
+    image: "/assets/post1.jpg",
+    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
+    icon: linkedinIcon,
+    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
+  },
+  {
+    image: "/assets/post2.jpg",
+    text: "Thanks Pramod bhai n Ravi for all the lovely words but we only stand as Prudent with all of us together n no individual is bigger than Prudent....Love u...",
+    icon: linkedinIcon,
+    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
+  },
+  {
+    image: "/assets/post3.jpg",
+    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
+    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
+    icon: facebookIcon,
+  },
+  {
+    image: "/assets/post4.jpg",
+    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
+    icon: instagramIcon,
+    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
+  },
+  {
+    image: "/assets/post5.jpg",
+    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
+    icon: instagramIcon,
+    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
+  },
+  {
+    image: "/assets/post6.png",
+    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
+    icon: instagramIcon,
+    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
+  },
+  {
+    image: "/assets/post7.png",
+    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
+    icon: instagramIcon,
+    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
+  },
+];
 
 const Post = () => {
   const headRef1 = useRef(null);
@@ -59,39 +102,69 @@ const Post = () => {
             ref={headRef2}
             className="main-heading text-[56px] font-bold mb-4"
           >
-            <span className="text-[#959595]">See M</span>
-            <span>y Posts</span>
+            <span className="text-[#959595]">See M</span>y Posts
           </h2>
         </div>
         <Swiper
           slidesPerView={5}
-          pagination={{
-            clickable: true,
-          }}
-          autoplay={{
-            delay: 1500,
-          }}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 1500 }}
           loop={true}
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {[post1, post2, post3, post4, post5, post6, post7].map(
-            (post, index) => (
-              <SwiperSlide key={index}>
-                <div className="overflow-hidden">
-                  <img
-                    className="w-full h-[400px] object-cover"
-                    src={post}
-                    alt={`Post ${index + 1}`}
-                  />
-                </div>
-              </SwiperSlide>
-            )
-          )}
+          {postsData.map((postData, index) => (
+            <SwiperSlide key={index}>
+              <HoverCard
+                image={postData.image}
+                text={postData.text}
+                index={index}
+                icon={postData.icon}
+                link={postData.link}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </section>
     </>
   );
+};
+
+function HoverCard({ image, text, index, icon,link }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <Link
+      className="overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      to={link}
+      target="_blank"
+    >
+      <img
+        className="w-full h-[400px] object-cover transition-opacity duration-300"
+        src={image}
+        alt={`Post ${index + 1}`}
+        style={{ opacity: isHovered ? 0.5 : 1 }}
+      />
+      {isHovered && (
+        <div className="relative">
+          <div className="absolute bottom-20 bg-black bg-opacity-40 p-4 flex items-center justify-center text-center flex-col text-white text-lg">
+            <img className="h-8 w-8" src={icon} alt="Icon" />
+            <p>{text}</p>
+          </div>
+        </div>
+      )}
+    </Link>
+  );
+}
+
+HoverCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  icon: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 export default Post;

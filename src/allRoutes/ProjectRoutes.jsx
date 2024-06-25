@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "../pages/index.js";
 import { useEffect, useState } from "react";
 import Loading from "../components/loading/Loading.jsx";
+import InnerGenericPage from "../pages/InnerGenericPage.jsx";
 const ProjectRoutes = () => {
   const [isLoading, setIsLoading] = useState(true);
  
@@ -20,6 +21,7 @@ const ProjectRoutes = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/:name" element={<InnerGenericPage />} />
           </Routes>
         </Router>
       )}
