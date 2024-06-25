@@ -1,0 +1,165 @@
+[
+    {
+      "chapter": "I",
+      "title": "Ride the Digital Wave",
+      "description": [
+        "Surveying the scenario",
+        "The Strategic Road Map",
+        "Understanding the Strategic Road Map"
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/ntIP9Am8XVc?si=UE7EIe2sS4UOQDNf",
+          "title": "Video 1"
+        },
+        {
+          "url": "https://www.youtube.com/embed/ntIP9Am8XVc?si=UE7EIe2sS4UOQDNf",
+          "title": "Video 2"
+        },
+        {
+          "url": "https://www.youtube.com/embed/ntIP9Am8XVc?si=UE7EIe2sS4UOQDNf",
+          "title": "Video 3"
+        },
+        {
+          "url": "https://www.youtube.com/embed/ntIP9Am8XVc?si=UE7EIe2sS4UOQDNf",
+          "title": "Video 4"
+        }
+      ]
+    },
+    {
+      "chapter": "II",
+      "title": "Navigating the Digital Transformation",
+      "description": [
+        "Building a Digital Culture",
+        "Embracing Technological Change",
+        "Leading with Innovation"
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo1",
+          "title": "Video 1"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo2",
+          "title": "Video 2"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo3",
+          "title": "Video 3"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo4",
+          "title": "Video 4"
+        }
+      ]
+    },
+    {
+      "chapter": "III",
+      "title": "The Power of Data Analytics",
+      "description": [
+        "Harnessing Big Data",
+        "Predictive Analytics",
+        "Data-Driven Decision Making"
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo5",
+          "title": "Video 1"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo6",
+          "title": "Video 2"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo7",
+          "title": "Video 3"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo8",
+          "title": "Video 4"
+        }
+      ]
+    },
+    {
+      "chapter": "IV",
+      "title": "Digital Marketing Strategies",
+      "description": [
+        "Understanding SEO",
+        "Social Media Marketing",
+        "Content Creation and Curation"
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo9",
+          "title": "Video 1"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo10",
+          "title": "Video 2"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo11",
+          "title": "Video 3"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo12",
+          "title": "Video 4"
+        }
+      ]
+    },
+    {
+      "chapter": "V",
+      "title": "Cybersecurity Essentials",
+      "description": [
+        "Identifying Threats",
+        "Implementing Security Measures",
+        "Responding to Incidents"
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo13",
+          "title": "Video 1"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo14",
+          "title": "Video 2"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo15",
+          "title": "Video 3"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo16",
+          "title": "Video 4"
+        }
+      ]
+    },
+    {
+      "chapter": "VI",
+      "title": "Emerging Technologies",
+      "description": [
+        "Introduction to Blockchain",
+        "The Rise of AI",
+        "Future of IoT"
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo17",
+          "title": "Video 1"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo18",
+          "title": "Video 2"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo19",
+          "title": "Video 3"
+        },
+        {
+          "url": "https://www.youtube.com/embed/anotherVideo20",
+          "title": "Video 4"
+        }
+      ]
+    }
+  ]
+  

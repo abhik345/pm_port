@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import projectData from "../../lib/data.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,11 +10,13 @@ function Projects() {
   const headRef1 = useRef(null);
   const headRef2 = useRef(null);
 
-  const videos = [
-    "https://cruisefront.kreativemachinez.in/images/videoo-ship.mp4",
-    "https://cruisefront.kreativemachinez.in/images/videoo-ship.mp4",
-    "https://cruisefront.kreativemachinez.in/images/videoo-ship.mp4",
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setData(projectData);
+  }, []);
+
+  console.log(data);
 
   useGSAP(() => {
     gsap.from(headRef1.current, {
@@ -196,22 +199,24 @@ function Projects() {
         </div>
         <br />
         <div className="rightblock w-2/3 h-screen flex flex-col justify-center">
-          <div className="relative w-[600px] h-[600px] left-56">
-            {videos.map((video, index) => (
+          <div className="relative w-[700px] h-[600px] left-56 bottom-32">
+            {data.map((item, index) => (
               <div
                 key={index}
-                className={`photo absolute w-full h-full flex flex-row gap-6`}
+                className={`photo absolute w-full h-full flex flex-row flex-wrap gap-6`}
                 style={{ zIndex: 100 - index }}
               >
-                <video
-                  src={video}
-                  alt={`video-${index}`}
-                  className="w-full h-full rounded-3xl object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
+                {item?.videos.map((video, i) => (
+                  <div key={i} className="jlkbkljw">
+                    <iframe
+                      height="400"
+                      src="https://www.youtube.com/embed/ntIP9Am8XVc?si=xVGmuoHP3OG8_NSr"
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
