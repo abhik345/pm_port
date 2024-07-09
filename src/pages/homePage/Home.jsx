@@ -10,7 +10,7 @@ import Projects from "./Projects.jsx";
 const createSlug = (text) => {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 };
 
