@@ -21,7 +21,7 @@ const ProjectRoutes = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:name" element={<InnerGenericPage />} />
+            <Route path="/:section/:item" element={<InnerGenericPage />} />
           </Routes>
         </Router>
       )}
