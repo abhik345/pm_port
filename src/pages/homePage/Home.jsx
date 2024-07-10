@@ -126,19 +126,19 @@ const sectionsData = [
       {
         id: 1,
         subtitle: "STARTING E-COMMERCE",
-        link: createSlug(" "),
+        link: createSlug("E-COMMERCE MARKETPLACES AGGREGATORS"),
         description: "What it entails",
       },
       {
         id: 2,
         subtitle: "FIND YOUR NICHE IN THE ONLINE MARKETPLACES",
-        link: createSlug(" "),
+        link: createSlug("E-COMMERCE MARKETPLACES AGGREGATORS"),
         description: "The platforms with universal reach",
       },
       {
         id: 3,
         subtitle: "LEVERAGING OTHER AGGREGATORS",
-        link: createSlug(" "),
+        link: createSlug("E-COMMERCE MARKETPLACES AGGREGATORS"),
         description: "It pays to be the Critic’s choice",
       },
     ],
