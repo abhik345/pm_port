@@ -20,7 +20,7 @@ const sectionsData = [
     title: "Section I",
     subtitle: "Crossing The Digital Frontier",
     link : createSlug("Crossing The Digital Frontier"),
-    colSpan: 2,
+    colSpan: 1,
     rowSpan: 1,
     items: [
       {
@@ -36,7 +36,7 @@ const sectionsData = [
     title: "Section II",
     subtitle: "Shifting The Paradigm",
     link : createSlug("Shifting The Paradigm"),
-    colSpan: 3,
+    colSpan: 2,
     rowSpan: 1,
     items: [
       {

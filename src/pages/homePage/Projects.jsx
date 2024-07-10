@@ -79,7 +79,7 @@ function Projects({ sections }) {
 
   return (
     <section className="bg-black text-white p-4">
-      <div className="grid h-auto grid-cols-5 gap-4 grid-rows-2">
+      <div className="grid h-auto grid-cols-4 gap-4 grid-rows-2">
         {sections?.map((section, index) => (
           <div key={index} className={`col-span-${section.colSpan} row-span-${section.rowSpan} bg-gray-800 p-4 rounded-lg shadow-lg`}>
             <div>
