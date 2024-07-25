@@ -76,7 +76,7 @@ const Brands = () => {
     });
   });
   return (
-    <section className=" bg-black text-white py-16">
+    <div className=" bg-black text-white py-16">
       <div className="container mx-auto p-24">
         <div className="grid grid-cols-4 gap-4">
           <div className=" col-span-2 text-white">
@@ -124,7 +124,7 @@ const Brands = () => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

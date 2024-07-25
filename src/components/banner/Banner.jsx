@@ -3,8 +3,23 @@ import { gsap } from "gsap";
 import { useRef, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LazyLoad from "react-lazyload";
+import api from "../../lib/api";
+import { useQuery } from "@tanstack/react-query";
+import PropTypes from "prop-types";
 
 const Banner = () => {
+
+  const { data: bannerData } = useQuery({
+    queryKey: ["getbanner"],
+    queryFn: api.getbanner,
+    select: (response) => response.data.acf,
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
+
+
   useEffect(() => {
     const tl = gsap.timeline();
     tl.set(".cite-with-line", { autoAlpha: 0 });
@@ -23,7 +38,7 @@ const Banner = () => {
       >
         <LazyLoad height={200} offset={100}>
           <img
-            src={bannerImage}
+            src={bannerData?.banner_section_options?.image_section?.image}
             alt="Banner"
             className="hidden"
             onLoad={() => {
@@ -47,7 +62,7 @@ const Banner = () => {
             ></path>
           </svg>
 
-          <TextRevealAnimation />
+          <TextRevealAnimation total={bannerData?.banner_section_options?.text_section}/>
           <svg
             className="absolute -right-10 sm:-right-12 md:-right-14 lg:-right-16 xl:-right-16 -bottom-5 transform rotate-180 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
             viewBox="0 0 16 16"
@@ -62,7 +77,7 @@ const Banner = () => {
           </svg>
 
           <cite className="absolute -bottom-10 sm:-bottom-12 md:-bottom-16 lg:-bottom-20 xl:-bottom-20 right-3 font-medium text-white text-2xl not-italic cite-with-line">
-            Pramod K Maloo
+            {bannerData?.banner_section_options?.text_section?.name}
           </cite>
         </blockquote>
       </div>
@@ -89,9 +104,8 @@ const splitText = (text) => {
   return words;
 };
 
-const TextRevealAnimation = () => {
+const TextRevealAnimation = ({total}) => {
   const textRef = useRef();
-
   useGsap(() => {
     const chars = textRef.current.querySelectorAll(".char");
 
@@ -123,8 +137,7 @@ const TextRevealAnimation = () => {
     createScrollTrigger(textRef.current, tl);
   }, []);
 
-  const text =
-    "I just wanted to say that I'm very happy with my purchase so far. The documentation is outstanding - clear and detailed.";
+  const text = total?.banner_text;
   const textArray = splitText(text);
 
   return (
@@ -143,4 +156,7 @@ const TextRevealAnimation = () => {
   );
 };
 
+TextRevealAnimation.propTypes = {
+  total: PropTypes.node
+}
 export { TextRevealAnimation };

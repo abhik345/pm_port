@@ -36,39 +36,3 @@ html {
     margin-top: 128px !important; 
   }
   
-  @media only screen and (min-width: 640px) {
-    .contact-me {
-      margin-top: 128px !important; 
-    }
-  }
-  
-  @media only screen and (min-width: 768px) {
-    .contact-me {
-      margin-top: 192px !important; 
-    }
-  }
-  
-  @media only screen and (min-width: 1024px) {
-    .contact-me {
-      margin-top: 384px !important;
-    }
-  }
-  
-  @media only screen and (min-width: 1280px) {
-    .contact-me {
-      margin-top: 384px !important; 
-    }
-  }
-  
-  @media only screen and (min-width: 1536px) {
-
-    .contact-me {
-      margin-top: 384px !important;
-    }
-  }
-  
-  @media only screen and (min-width: 1919px) {
-    .contact-me {
-      margin-top: 384px !important;
-    }
-  }

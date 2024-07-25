@@ -10,7 +10,7 @@ import Projects from "./Projects.jsx";
 const createSlug = (text) => {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 };
 
@@ -126,19 +126,19 @@ const sectionsData = [
       {
         id: 1,
         subtitle: "STARTING E-COMMERCE",
-        link: createSlug("E-COMMERCE MARKETPLACES AGGREGATORS"),
+        link: createSlug("STARTING E-COMMERCE"),
         description: "What it entails",
       },
       {
         id: 2,
         subtitle: "FIND YOUR NICHE IN THE ONLINE MARKETPLACES",
-        link: createSlug("E-COMMERCE MARKETPLACES AGGREGATORS"),
+        link: createSlug("FIND YOUR NICHE IN THE ONLINE MARKETPLACES"),
         description: "The platforms with universal reach",
       },
       {
         id: 3,
         subtitle: "LEVERAGING OTHER AGGREGATORS",
-        link: createSlug("E-COMMERCE MARKETPLACES AGGREGATORS"),
+        link: createSlug("LEVERAGING OTHER AGGREGATORS"),
         description: "It pays to be the Critic’s choice",
       },
     ],
@@ -182,7 +182,7 @@ const Home = () => {
         <Projects sections={sectionsData} />
         <Post />
         <Brands />
-        <Gallery />
+        {/* <Gallery /> */}
         <ContactMe />
       </Layout>
     </>
