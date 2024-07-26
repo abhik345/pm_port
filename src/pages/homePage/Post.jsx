@@ -10,6 +10,8 @@ import linkedinIcon from "/assets/linkedin.svg";
 import facebookIcon from "/assets/fb.svg";
 import instagramIcon from "/assets/insta.svg";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import api from "../../lib/api";
 
 const postsData = [
   {
@@ -88,6 +90,15 @@ const Post = () => {
     });
   });
 
+  const { data: postsectionHeading } = useQuery({
+    queryKey: ["getpstsectionheading"],
+    queryFn: api.getpstsectionheading,
+    select: (response) => response?.data?.acf,
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
   return (
     <>
       <section>
@@ -96,13 +107,16 @@ const Post = () => {
             ref={headRef1}
             className="heading-with-line text-[20px] font-medium"
           >
-            Posts
+            {postsectionHeading?.posts_options?.heading}
           </h3>
           <h2
             ref={headRef2}
             className="main-heading text-[56px] font-bold mb-4"
           >
-            <span className="text-[#959595]">See M</span>y Posts
+            <span className="text-[#959595]">
+              {postsectionHeading?.posts_options?.title_section?.title}
+            </span>
+            {postsectionHeading?.posts_options?.title_section?.sub_title}
           </h2>
         </div>
         <Swiper
@@ -130,7 +144,7 @@ const Post = () => {
   );
 };
 
-function HoverCard({ image, text, index, icon,link }) {
+function HoverCard({ image, text, index, icon, link }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

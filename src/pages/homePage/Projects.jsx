@@ -4,6 +4,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useQuery } from "@tanstack/react-query";
+import api from "../../lib/api";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,6 +40,29 @@ function Projects() {
     });
   });
 
+  // const handleClick = (sectionSubtitle, itemSubtitle, sectionId) => {
+  //   const url = `/${encodeURIComponent(sectionSubtitle)}/${encodeURIComponent(
+  //     itemSubtitle
+  //   )}`;
+  //   navigate(url, {
+  //     state: {
+  //       id: sectionId,
+  //     },
+  //   });
+  // };
+
+
+
+  const { data: bookData } = useQuery({
+    queryKey: ["getproject"],
+    queryFn: api.getproject,
+    select: (response) => response?.data,
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  console.log(bookData)
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -67,17 +92,7 @@ function Projects() {
     return () => ctx.revert();
   }, []);
 
-  // const handleClick = (sectionSubtitle, itemSubtitle, sectionId) => {
-  //   const url = `/${encodeURIComponent(sectionSubtitle)}/${encodeURIComponent(
-  //     itemSubtitle
-  //   )}`;
-  //   navigate(url, {
-  //     state: {
-  //       id: sectionId,
-  //     },
-  //   });
-  // };
-
+  
   return (
     <>
       <div className="main_project p-10">
