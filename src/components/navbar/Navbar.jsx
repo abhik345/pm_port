@@ -1,23 +1,10 @@
-import { Link as ScrollLink } from "react-scroll";
-import { motion } from "framer-motion";
+
 import { useQuery } from "@tanstack/react-query";
 import api from "../../lib/api";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const navLinks = [
-    { name: "LinkedIn", to: "bookSection" },
-    { name: "Facebook", to: "brandsSection" },
-    { name: "Instagram", to: "aboutSection" },
-    { name: "Youtube", to: "contactSection" },
-  ];
-
-  const linkVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-    hover: { scale: 1.1, color: "#FBBF24" },
-  };
 
   const { data: headerData } = useQuery({
     queryKey: ["getheaders"],
@@ -25,6 +12,15 @@ const Navbar = () => {
     select: (response) => response.data.header,
     onError: (err) => {
       console.log(err);
+    },
+  });
+
+  const { data: socialIconsData } = useQuery({
+    queryKey: ["getsocialicon"],
+    queryFn: api.getsocialicon,
+    select: (response) => response.data,
+    onError: (error) => {
+      console.log(error);
     },
   });
 
@@ -45,27 +41,20 @@ const Navbar = () => {
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-10">
-          {navLinks.map((link, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              animate="visible"
-              whileHover="hover"
-              variants={linkVariants}
-              transition={{ duration: 0.3 }}
-            >
-              <ScrollLink
-                to={link.to}
-                className="text-[22px] font-medium cursor-pointer"
-                smooth={true}
-                duration={500}
-                spy={true}
-                activeClass="text-yellow-400"
-              >
-                {link.name}
-              </ScrollLink>
-            </motion.div>
-          ))}
+          <div className="flex flex-row gap-3">
+            {socialIconsData?.social_media &&
+              socialIconsData?.social_media?.map((icon, index) => (
+                <div key={index} className="bg-[#D9D9D9] p-4 rounded-full">
+                  <a href={icon.link}>
+                    <img
+                      className="inline-block h-6 w-6"
+                      src={icon.social_media_icon}
+                      alt={icon.social_media_name}
+                    />
+                  </a>
+                </div>
+              ))}
+          </div>
         </nav>
       </header>
     </>

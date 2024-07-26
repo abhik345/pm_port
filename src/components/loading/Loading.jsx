@@ -7,7 +7,7 @@ const Loading = ({ onComplete }) => {
   const rounded = useTransform(count, Math.round);
 
   useEffect(() => {
-    const animation = animate(count, 100, { duration: 5 });
+    const animation = animate(count, 100, { duration: 3 });
     animation.then(() => onComplete()); 
     return () => animation.stop();
   }, [count, onComplete]);
