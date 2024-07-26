@@ -17,14 +17,7 @@ const Navbar = () => {
     },
   });
 
-  const { data: socialIconsData } = useQuery({
-    queryKey: ["getsocialicon"],
-    queryFn: api.getsocialicon,
-    select: (response) => response.data,
-    onError: (error) => {
-      console.log(error);
-    },
-  });
+  console.log(headerData)
 
   useEffect(() => {
     if (bookRef.current) {
@@ -51,20 +44,20 @@ const Navbar = () => {
       <header className="flex items-center justify-between h-24 px-4 sm:px-6 lg:px-8 bg-gray-900 text-gray-50">
         <div className="flex items-center cursor-pointer" onClick={handleClick}>
           <span className="text-[35px] font-normal italic text-white">
-            {headerData?.logo_texts?.text}
+            {headerData?.header_logo?.logo_texts?.text}
           </span>
           <span className="mx-1"></span>
           <span className="text-[35px] font-normal italic text-yellow-400">
-            {headerData?.logo_texts?.sub_text}
+            {headerData?.header_logo?.logo_texts?.sub_text}
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-10">
           <div className="flex flex-row items-center gap-3">
-            <h5 ref={bookRef} className="font-medium text-[24px] mr-6">
+            <h5 ref={bookRef} className="font-medium text-[24px] mr-6 cursor-pointer" onClick={() => navigate("/book")}>
               Book
             </h5>
-            {socialIconsData?.social_media &&
-              socialIconsData?.social_media?.map((icon, index) => (
+            {headerData?.social_media_sections &&
+              headerData?.social_media_sections?.map((icon, index) => (
                 <div key={index} className="bg-[#111827] p-2 rounded-full">
                   <a href={icon.link}>
                     <img
