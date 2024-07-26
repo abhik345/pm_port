@@ -6,6 +6,7 @@ import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import api from "../../lib/api";
 import { useQuery } from "@tanstack/react-query";
+import PropTypes from 'prop-types';
 
 const Brands = () => {
   const { data: brandData } = useQuery({
@@ -84,7 +85,7 @@ const Brands = () => {
                     <h2 className="text-white text-[20px] font-semibold mt-4">
                       {item.brand_name}
                     </h2>
-                    <p className="text-white mt-2">{item.brand_text}</p>
+                    <TruncatedText text={item.brand_text} maxLength={70} />
                   </div>
                   <div className="flex justify-end">
                     <button className="bg-white text-black rounded-full hover:bg-gray-200 p-3 chevron-button">
@@ -101,3 +102,21 @@ const Brands = () => {
 };
 
 export default Brands;
+
+
+const TruncatedText = ({ text, maxLength }) => {
+  const truncatedText = text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+
+  return (
+    <p className="text-white mt-2">{truncatedText}</p>
+  );
+};
+
+TruncatedText.propTypes = {
+  text: PropTypes.string.isRequired,
+  maxLength: PropTypes.number.isRequired,
+};
+
+TruncatedText.defaultProps = {
+  maxLength: 70,
+};

@@ -40,18 +40,23 @@ function Projects() {
     });
   });
 
-  // const handleClick = (sectionSubtitle, itemSubtitle, sectionId) => {
-  //   const url = `/${encodeURIComponent(sectionSubtitle)}/${encodeURIComponent(
-  //     itemSubtitle
-  //   )}`;
-  //   navigate(url, {
-  //     state: {
-  //       id: sectionId,
-  //     },
-  //   });
-  // };
+  const createSlug = (text) => {
+    return text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+  };
 
-
+  const handleClick = (sectionSubtitle, itemSubtitle, sectionId) => {
+    const sectionSlug = createSlug(sectionSubtitle);
+    const itemSlug = createSlug(itemSubtitle);
+    const url = `/${sectionSlug}/${itemSlug}`;
+    navigate(url, {
+      state: {
+        id: sectionId,
+      },
+    });
+  };
 
   const { data: bookData } = useQuery({
     queryKey: ["getproject"],
@@ -62,7 +67,7 @@ function Projects() {
     },
   });
 
-  console.log(bookData)
+  console.log(bookData);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -89,270 +94,89 @@ function Projects() {
         scrub: 1,
       });
     });
+
+    gsap.to(".line_para li:nth-child(odd)", {
+      x: 20,
+      y: 0,
+      repeat: 5,
+      yoyo: true,
+      duration: 0.15,
+      ease: "sine.in",
+      onComplete: function() {
+        gsap.to(this.targets(), {
+          x: 0,
+          duration: 1.5,
+          ease: "elastic.out(1, 0.3)",
+        });
+      },
+    });
     return () => ctx.revert();
   }, []);
 
-  
   return (
     <>
       <div className="main_project p-10">
         <div className="text_heading text-center m-auto">
-          <h3 ref={headRef1} className="font-bold text-center m-0 text-[20px] text-[#FFFFFF]">
+          <h3
+            ref={headRef1}
+            className="font-bold text-center m-0 text-[20px] text-[#FFFFFF]"
+          >
             Project
           </h3>
-          <h2 ref={headRef2} className="main-heading text-[56px] font-bold mb-4">
+          <h2
+            ref={headRef2}
+            className="main-heading text-[56px] font-bold mb-4"
+          >
             <span className="text-[#959595]">Lets Empo</span>
             <span className="text-[#FFFFFF]">wer Business Growth</span>
           </h2>
         </div>
         <div className="img_section flex justify-center">
           <div className="row_section container w-full m-0 pl-10 pr-10 flex gap-4 overflow-hidden items-center">
-            <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div
-                className="img_box text-white transition transform  
+            {bookData &&
+              bookData?.map((book) => (
+                <div
+                  className="img_box_hover hover: delay-1000 ease-in-out "
+                  key={book.id}
+                >
+                  <div
+                    className="img_box text-white transition transform  
               relative  rounded-xl overflow-hidden "
-              >
-                <img
-                  className=" object-cover relative z-0 "
-                  src="./assets/section vi.jpg"
-                />
-                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
-                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
-                  <h3 className="  absolute  flex text-center font-bold text-3xl">
-                    SECTIONI
-                  </h3>
-                  <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">
-                      Section I
-                    </h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
-                      Lorem ipsum dolor sit amet.
-                    </h5>
-                    <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                    <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
+                  >
+                    <img
+                      className=" object-cover relative z-0 "
+                      src={book?.section_image}
+                    />
+                    <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
+                    <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
+                      <h3 className="  absolute  flex text-center font-bold text-2xl">
+                        {book?.title}
+                      </h3>
+                      <div className="para_part absolute bottom-10  z-1 w-max">
+                        <h4 className="text-3xl font-semibold text-white relative ">
+                          {book?.title}
+                        </h4>
+                        <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
+                          {book?.subtitle}
+                        </h5>
+                        <ol className="line_para list-disc justify-start m-3 pb-2 text-sm font-normal text-white">
+                          {book?.items.map((item) => (
+                            <li
+                              key={item.id}
+                              className="underline cursor-pointer mb-1"
+                              onClick={() =>
+                                handleClick(book.subtitle, item.title, book.id)
+                              }
+                            >
+                              {item?.title}
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div
-                className="img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden "
-              >
-                <img
-                  className=" object-cover relative z-0 "
-                  src="./assets/section vi.jpg"
-                />
-                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
-                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
-                  <h3 className="  absolute  flex text-center font-bold text-3xl">
-                    SECTIONI
-                  </h3>
-                  <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">
-                      Section I
-                    </h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
-                      Lorem ipsum dolor sit amet.
-                    </h5>
-                    <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                    <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div
-                className="img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden "
-              >
-                <img
-                  className=" object-cover relative z-0 "
-                  src="./assets/section vi.jpg"
-                />
-                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
-                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
-                  <h3 className="  absolute  flex text-center font-bold text-3xl">
-                    SECTIONI
-                  </h3>
-                  <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">
-                      Section I
-                    </h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
-                      Lorem ipsum dolor sit amet.
-                    </h5>
-                    <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                    <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div
-                className="img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden "
-              >
-                <img
-                  className=" object-cover relative z-0 "
-                  src="./assets/section vi.jpg"
-                />
-                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
-                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
-                  <h3 className="  absolute  flex text-center font-bold text-3xl">
-                    SECTIONI
-                  </h3>
-                  <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">
-                      Section I
-                    </h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
-                      Lorem ipsum dolor sit amet.
-                    </h5>
-                    <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                    <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div
-                className="img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden "
-              >
-                <img
-                  className=" object-cover relative z-0 "
-                  src="./assets/section vi.jpg"
-                />
-                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
-                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
-                  <h3 className="  absolute  flex text-center font-bold text-3xl">
-                    SECTIONI
-                  </h3>
-                  <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">
-                      Section I
-                    </h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
-                      Lorem ipsum dolor sit amet.
-                    </h5>
-                    <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                    <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div
-                className="img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden "
-              >
-                <img
-                  className=" object-cover relative z-0 "
-                  src="./assets/section vi.jpg"
-                />
-                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
-                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
-                  <h3 className="  absolute  flex text-center font-bold text-3xl">
-                    SECTIONI
-                  </h3>
-                  <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">
-                      Section I
-                    </h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
-                      Lorem ipsum dolor sit amet.
-                    </h5>
-                    <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                    <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">
-                        Website and Beyond
-                      </p>
-                      <p className="text-sm font-normal text-white">
-                        Website and Beyond
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              ))}
           </div>
         </div>
       </div>

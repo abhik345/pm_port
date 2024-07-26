@@ -99,6 +99,15 @@ const Post = () => {
     },
   });
 
+  const { data: postData } = useQuery({
+    queryKey: ["getpost"],
+    queryFn: api.getpost,
+    select: (response) => response?.data,
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
   return (
     <>
       <section>

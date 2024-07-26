@@ -29,15 +29,31 @@ const api = {
     );
     return response;
   },
+  getpost: async () => {
+    const response = await axios.get(`${baseUrl}/posts`);
+    return response;
+  },
 
   getbrands: async () => {
-    const response = await axios.get(`${baseUrl}/pages/10?_fields=acf.our_brand_options&acf_format=standard`);
-    return response
+    const response = await axios.get(
+      `${baseUrl}/pages/10?_fields=acf.our_brand_options&acf_format=standard`
+    );
+    return response;
   },
   getContacts: async () => {
-    const response = await axios.get(`${baseUrl}/pages/10?_fields=acf.contact_options&acf_format=standard`);
+    const response = await axios.get(
+      `${baseUrl}/pages/10?_fields=acf.contact_options&acf_format=standard`
+    );
     return response;
-  }
+  },
+  getfooter: async () => {
+    const response = await axios.get(`${baseUrl}/acf-options/footer`);
+    return response;
+  },
+  getsocialicon: async () => {
+    const response = await axios.get(`${baseUrl}/acf-options/social-media`);
+    return response;
+  },
 };
 
 export default api;
