@@ -44,7 +44,7 @@ const Banner = () => {
           />
         </LazyLoad>
       </div>
-      <div className="relative lg:max-w-2xl max-w-3xl px-4 sm:px-6 lg:px-4 lg:right-32 py-16 text-right right-10 sm:right-20 md:right-40">
+      <div className="relative lg:max-w-2xl max-w-3xl px-4 sm:px-6 lg:px-4 lg:right-32 py-16 text-left right-10 sm:right-20 md:right-40">
         <blockquote className="relative">
           <svg
             className="absolute -top-6 left-2.5 sm:-left-6 md:-left-8 lg:-left-16 xl:-left-16 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
@@ -61,7 +61,7 @@ const Banner = () => {
 
           <TextRevealAnimation total={bannerData?.banner_section_options?.text_section}/>
           <svg
-            className="absolute -right-10 sm:-right-12 md:-right-14 lg:-right-16 xl:-right-16 -bottom-5 transform rotate-180 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
+            className="absolute -right-10 sm:-right-12 md:right-80 lg:right-16 xl:right-16 -bottom-5 transform rotate-180 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
             viewBox="0 0 16 16"
             fill="#DCA514"
             xmlns="http://www.w3.org/2000/svg"

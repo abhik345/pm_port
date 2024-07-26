@@ -2,10 +2,12 @@
 import { useQuery } from "@tanstack/react-query";
 import Layout from "../components/layout/Layout";
 import { useParams } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import api from "../lib/api";
 
 const InnerGenericPage = () => {
   const { item } = useParams();
+  const iframeRef = useRef(null);
 
   const { data: innerDetails } = useQuery({
     queryKey: ["getInnerDetails", item],
@@ -15,6 +17,12 @@ const InnerGenericPage = () => {
       console.log(err);
     },
   });
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      iframeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [innerDetails]);
 
   const getYouTubeID = (url) => {
     if (typeof url !== "string") return null;
@@ -27,7 +35,7 @@ const InnerGenericPage = () => {
 
   return (
     <Layout>
-      <div className="main_banner relative">
+      <div className="main_banner relative" ref={iframeRef}>
         <div className="w-auto m-auto p-0">
           <img
             className="w-full h-64 object-cover"
@@ -54,6 +62,7 @@ const InnerGenericPage = () => {
       <div className="container w-4/5 m-auto rounded-2xl overflow-hidden video_section">
         {videoID && (
           <iframe
+            
             width="100%"
             height="450px"
             src={`https://www.youtube.com/embed/${videoID}?controls=0`}
@@ -65,12 +74,12 @@ const InnerGenericPage = () => {
       </div>
 
       <div className="text_section container w-auto m-auto p-20">
-        <div className="borcder_text border-4  border-yellow-500	 p-10 m-auto justify-center relative">
-          <h4 className=" absolute -top-6 bg-white py-1 px-5 text-3xl font-semibold ">
+        <div className="borcder_text border-4 border-yellow-500 p-10 m-auto justify-center relative">
+          <h4 className="absolute -top-6 bg-white py-1 px-5 text-3xl font-semibold">
             {"Pramod's Take"}
           </h4>
           <p
-            className="leading-7 font-normal text-sm  py-4  tracking-wide "
+            className="leading-7 font-normal text-sm py-4 tracking-wide"
             dangerouslySetInnerHTML={{ __html: innerDetails?.content }}
           />
         </div>

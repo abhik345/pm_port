@@ -1,10 +1,12 @@
-
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import api from "../../lib/api";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const bookRef = useRef(null);
 
   const { data: headerData } = useQuery({
     queryKey: ["getheaders"],
@@ -24,6 +26,22 @@ const Navbar = () => {
     },
   });
 
+  useEffect(() => {
+    if (bookRef.current) {
+      gsap.fromTo(
+        bookRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "power2.inOut"
+        }
+      );
+    }
+  }, []);
+
   const handleClick = () => {
     navigate("/");
   };
@@ -41,13 +59,16 @@ const Navbar = () => {
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-10">
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row items-center gap-3">
+            <h5 ref={bookRef} className="font-medium text-[24px] mr-6">
+              Book
+            </h5>
             {socialIconsData?.social_media &&
               socialIconsData?.social_media?.map((icon, index) => (
-                <div key={index} className="bg-[#D9D9D9] p-4 rounded-full">
+                <div key={index} className="bg-[#111827] p-2 rounded-full">
                   <a href={icon.link}>
                     <img
-                      className="inline-block h-6 w-6"
+                      className="inline-block !h-5 !w-5"
                       src={icon.social_media_icon}
                       alt={icon.social_media_name}
                     />
