@@ -6,57 +6,9 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import { useGSAP } from "@gsap/react";
 import PropTypes from "prop-types";
-import linkedinIcon from "/assets/linkedin.svg";
-import facebookIcon from "/assets/fb.svg";
-import instagramIcon from "/assets/insta.svg";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import api from "../../lib/api";
-
-const postsData = [
-  {
-    image: "/assets/post1.jpg",
-    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
-    icon: linkedinIcon,
-    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
-  },
-  {
-    image: "/assets/post2.jpg",
-    text: "Thanks Pramod bhai n Ravi for all the lovely words but we only stand as Prudent with all of us together n no individual is bigger than Prudent....Love u...",
-    icon: linkedinIcon,
-    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
-  },
-  {
-    image: "/assets/post3.jpg",
-    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
-    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
-    icon: facebookIcon,
-  },
-  {
-    image: "/assets/post4.jpg",
-    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
-    icon: instagramIcon,
-    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
-  },
-  {
-    image: "/assets/post5.jpg",
-    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
-    icon: instagramIcon,
-    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
-  },
-  {
-    image: "/assets/post6.png",
-    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
-    icon: instagramIcon,
-    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
-  },
-  {
-    image: "/assets/post7.png",
-    text: "At Kreative Machinez we work with a simple philosophy - Team goals are bigger than one’s individual aspirations. When 'I' becomes 'we', illness transforms into wellness. We believe in the power of collaboration to elevate every project, every client, and every brand.",
-    icon: instagramIcon,
-    link: "https://www.linkedin.com/posts/pramodmaloo_kreativemachinez-dreamteam-teamwork-activity-7163908193109094401-YUrQ?utm_source=share&utm_medium=member_android",
-  },
-];
 
 const Post = () => {
   const headRef1 = useRef(null);
@@ -136,14 +88,14 @@ const Post = () => {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {postsData.map((postData, index) => (
+          {postData && postData?.map((postData, index) => (
             <SwiperSlide key={index}>
               <HoverCard
-                image={postData.image}
-                text={postData.text}
+                image={postData.thumbnail}
+                text={postData.content}
                 index={index}
-                icon={postData.icon}
-                link={postData.link}
+                icon={postData.social_icon}
+                link={postData.url}
               />
             </SwiperSlide>
           ))}
@@ -174,7 +126,7 @@ function HoverCard({ image, text, index, icon, link }) {
         <div className="relative">
           <div className="absolute bottom-20 bg-black bg-opacity-40 p-4 flex items-center justify-center text-center flex-col text-white text-lg">
             <img className="h-8 w-8" src={icon} alt="Icon" />
-            <p>{text}</p>
+            <div dangerouslySetInnerHTML={{ __html: text }} />
           </div>
         </div>
       )}

@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const navLinks = [
-    { name: "Books", to: "bookSection" },
-    { name: "Brands", to: "brandsSection" },
-    { name: "About", to: "aboutSection" },
-    { name: "Contact", to: "contactSection" },
+    { name: "LinkedIn", to: "bookSection" },
+    { name: "Facebook", to: "brandsSection" },
+    { name: "Instagram", to: "aboutSection" },
+    { name: "Youtube", to: "contactSection" },
   ];
 
   const linkVariants = {

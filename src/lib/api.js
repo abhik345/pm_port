@@ -54,6 +54,11 @@ const api = {
     const response = await axios.get(`${baseUrl}/acf-options/social-media`);
     return response;
   },
+
+  getInnerDetails: async (name) => {
+    const response = await axios.get(`${baseUrl}/book/${name}`);
+    return response;
+  },
 };
 
 export default api;
