@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Projects({ sections }) {
+function Projects() {
   const headRef1 = useRef(null);
   const headRef2 = useRef(null);
   const navigate = useNavigate();
@@ -66,195 +66,281 @@ function Projects({ sections }) {
     return () => ctx.revert();
   }, []);
 
-  
-
-  const handleClick = (sectionSubtitle, itemSubtitle, sectionId) => {
-    const url = `/${encodeURIComponent(sectionSubtitle)}/${encodeURIComponent(itemSubtitle)}`;
-    navigate(url, {
-      state: {
-        id: sectionId,
-      },
-    });
-  };
-
-  console.log(sections);
+  // const handleClick = (sectionSubtitle, itemSubtitle, sectionId) => {
+  //   const url = `/${encodeURIComponent(sectionSubtitle)}/${encodeURIComponent(
+  //     itemSubtitle
+  //   )}`;
+  //   navigate(url, {
+  //     state: {
+  //       id: sectionId,
+  //     },
+  //   });
+  // };
 
   return (
     <>
-{/* <div className="container mx-auto px-2 py-6">
-          <h3
-            ref={headRef1}
-            className="heading-with-line text-[20px] font-medium"
-          >
-            Posts
-          </h3>
-          <h2
-            ref={headRef2}
-            className="main-heading text-[56px] font-bold mb-4"
-          >
-            <span className="text-[#959595]">See M</span>y Posts
-          </h2>
-        </div> */}
-    <div className="main_project p-10">
+      <div className="main_project p-10">
         <div className="text_heading text-center m-auto">
-          <p className="font-medium text-base pb-3 text-center m-0 ">Project</p>
-          <h2 className="font-semibold text-4xl mb-5 text-white">Lets Empower Business Growth</h2>
+          <h3 ref={headRef1} className="font-bold text-center m-0 text-[20px] text-[#FFFFFF]">
+            Project
+          </h3>
+          <h2 ref={headRef2} className="main-heading text-[56px] font-bold mb-4">
+            <span className="text-[#959595]">Lets Empo</span>
+            <span className="text-[#FFFFFF]">wer Business Growth</span>
+          </h2>
         </div>
         <div className="img_section flex justify-center">
           <div className="row_section container w-full m-0 pl-10 pr-10 flex gap-4 overflow-hidden items-center">
-
             <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div className='img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden '>
-                <img className=' object-cover relative z-0 ' src='./assets/section vi.jpg' />
-                <div
-                  className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10">
-                </div>
-                <div className='category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6'>
-                  <h3 className='  absolute  flex text-center font-bold text-3xl' >SECTIONI</h3>
+              <div
+                className="img_box text-white transition transform  
+              relative  rounded-xl overflow-hidden "
+              >
+                <img
+                  className=" object-cover relative z-0 "
+                  src="./assets/section vi.jpg"
+                />
+                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
+                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
+                  <h3 className="  absolute  flex text-center font-bold text-3xl">
+                    SECTIONI
+                  </h3>
                   <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">Section I</h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">Lorem ipsum dolor sit amet.</h5>
+                    <h4 className="text-4xl font-semibold text-white relative ">
+                      Section I
+                    </h4>
+                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
+                      Lorem ipsum dolor sit amet.
+                    </h5>
                     <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                     <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div className='img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden '>
-                <img className=' object-cover relative z-0 ' src='./assets/section vi.jpg' />
-                <div
-                  className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10">
-                </div>
-                <div className='category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6'>
-                  <h3 className='  absolute  flex text-center font-bold text-3xl' >SECTIONI</h3>
+              <div
+                className="img_box text-white transition transform  
+              relative  rounded-xl overflow-hidden "
+              >
+                <img
+                  className=" object-cover relative z-0 "
+                  src="./assets/section vi.jpg"
+                />
+                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
+                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
+                  <h3 className="  absolute  flex text-center font-bold text-3xl">
+                    SECTIONI
+                  </h3>
                   <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">Section I</h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">Lorem ipsum dolor sit amet.</h5>
+                    <h4 className="text-4xl font-semibold text-white relative ">
+                      Section I
+                    </h4>
+                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
+                      Lorem ipsum dolor sit amet.
+                    </h5>
                     <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                     <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div className='img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden '>
-                <img className=' object-cover relative z-0 ' src='./assets/section vi.jpg' />
-                <div
-                  className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10">
-                </div>
-                <div className='category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6'>
-                  <h3 className='  absolute  flex text-center font-bold text-3xl' >SECTIONI</h3>
+              <div
+                className="img_box text-white transition transform  
+              relative  rounded-xl overflow-hidden "
+              >
+                <img
+                  className=" object-cover relative z-0 "
+                  src="./assets/section vi.jpg"
+                />
+                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
+                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
+                  <h3 className="  absolute  flex text-center font-bold text-3xl">
+                    SECTIONI
+                  </h3>
                   <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">Section I</h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">Lorem ipsum dolor sit amet.</h5>
+                    <h4 className="text-4xl font-semibold text-white relative ">
+                      Section I
+                    </h4>
+                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
+                      Lorem ipsum dolor sit amet.
+                    </h5>
                     <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                     <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div className='img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden '>
-                <img className=' object-cover relative z-0 ' src='./assets/section vi.jpg' />
-                <div
-                  className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10">
-                </div>
-                <div className='category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6'>
-                  <h3 className='  absolute  flex text-center font-bold text-3xl' >SECTIONI</h3>
+              <div
+                className="img_box text-white transition transform  
+              relative  rounded-xl overflow-hidden "
+              >
+                <img
+                  className=" object-cover relative z-0 "
+                  src="./assets/section vi.jpg"
+                />
+                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
+                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
+                  <h3 className="  absolute  flex text-center font-bold text-3xl">
+                    SECTIONI
+                  </h3>
                   <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">Section I</h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">Lorem ipsum dolor sit amet.</h5>
+                    <h4 className="text-4xl font-semibold text-white relative ">
+                      Section I
+                    </h4>
+                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
+                      Lorem ipsum dolor sit amet.
+                    </h5>
                     <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                     <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div className='img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden '>
-                <img className=' object-cover relative z-0 ' src='./assets/section vi.jpg' />
-                <div
-                  className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10">
-                </div>
-                <div className='category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6'>
-                  <h3 className='  absolute  flex text-center font-bold text-3xl' >SECTIONI</h3>
+              <div
+                className="img_box text-white transition transform  
+              relative  rounded-xl overflow-hidden "
+              >
+                <img
+                  className=" object-cover relative z-0 "
+                  src="./assets/section vi.jpg"
+                />
+                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
+                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
+                  <h3 className="  absolute  flex text-center font-bold text-3xl">
+                    SECTIONI
+                  </h3>
                   <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">Section I</h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">Lorem ipsum dolor sit amet.</h5>
+                    <h4 className="text-4xl font-semibold text-white relative ">
+                      Section I
+                    </h4>
+                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
+                      Lorem ipsum dolor sit amet.
+                    </h5>
                     <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                     <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="img_box_hover hover: delay-1000 ease-in-out ">
-              <div className='img_box text-white transition transform  
-              relative  rounded-xl overflow-hidden '>
-                <img className=' object-cover relative z-0 ' src='./assets/section vi.jpg' />
-                <div
-                  className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10">
-                </div>
-                <div className='category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6'>
-                  <h3 className='  absolute  flex text-center font-bold text-3xl' >SECTIONI</h3>
+              <div
+                className="img_box text-white transition transform  
+              relative  rounded-xl overflow-hidden "
+              >
+                <img
+                  className=" object-cover relative z-0 "
+                  src="./assets/section vi.jpg"
+                />
+                <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
+                <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
+                  <h3 className="  absolute  flex text-center font-bold text-3xl">
+                    SECTIONI
+                  </h3>
                   <div className="para_part absolute bottom-10  z-1 w-max">
-                    <h4 className="text-4xl font-semibold text-white relative ">Section I</h4>
-                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">Lorem ipsum dolor sit amet.</h5>
+                    <h4 className="text-4xl font-semibold text-white relative ">
+                      Section I
+                    </h4>
+                    <h5 className="text-2xl font-medium text-white mt-3 mb-3 w-11/12  ">
+                      Lorem ipsum dolor sit amet.
+                    </h5>
                     <div className="line_para justify-start pb-2 ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                     <div className="line_para justify-start  ">
-                      <p className=" text-sm font-normal text-white ">Website and Beyond</p>
-                      <p className="text-sm font-normal text-white">Website and Beyond</p>
+                      <p className=" text-sm font-normal text-white ">
+                        Website and Beyond
+                      </p>
+                      <p className="text-sm font-normal text-white">
+                        Website and Beyond
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-
-
           </div>
         </div>
       </div>
     </>
-    
   );
 }
 

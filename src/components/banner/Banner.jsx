@@ -8,7 +8,6 @@ import { useQuery } from "@tanstack/react-query";
 import PropTypes from "prop-types";
 
 const Banner = () => {
-
   const { data: bannerData } = useQuery({
     queryKey: ["getbanner"],
     queryFn: api.getbanner,
@@ -17,8 +16,6 @@ const Banner = () => {
       console.log(err);
     },
   });
-
-
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -47,7 +44,7 @@ const Banner = () => {
           />
         </LazyLoad>
       </div>
-      <div className="relative lg:max-w-2xl  max-w-3xl px-4 sm:px-6 lg:px-4 lg:right-32 py-16 text-right right-10 sm:right-20 md:right-40">
+      <div className="relative lg:max-w-2xl max-w-3xl px-4 sm:px-6 lg:px-4 lg:right-32 py-16 text-right right-10 sm:right-20 md:right-40">
         <blockquote className="relative">
           <svg
             className="absolute -top-6 -left-4 sm:-left-6 md:-left-8 lg:-left-16 xl:-left-16 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
@@ -104,7 +101,7 @@ const splitText = (text) => {
   return words;
 };
 
-const TextRevealAnimation = ({total}) => {
+const TextRevealAnimation = ({ total }) => {
   const textRef = useRef();
   useGsap(() => {
     const chars = textRef.current.querySelectorAll(".char");
@@ -137,7 +134,7 @@ const TextRevealAnimation = ({total}) => {
     createScrollTrigger(textRef.current, tl);
   }, []);
 
-  const text = total?.banner_text;
+  const text = total?.banner_text || "";  
   const textArray = splitText(text);
 
   return (
@@ -157,6 +154,7 @@ const TextRevealAnimation = ({total}) => {
 };
 
 TextRevealAnimation.propTypes = {
-  total: PropTypes.node
-}
+  total: PropTypes.object,  
+};
+
 export { TextRevealAnimation };
