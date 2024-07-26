@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useQuery } from "@tanstack/react-query";
+import api from "../../lib/api";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,13 +42,22 @@ const ContactMe = () => {
         duration: 2,
       }
     );
-
-    // Cleanup animations on component unmount
     return () => {
       animation1.kill();
       animation2.kill();
     };
   }, []);
+
+  const {data : contactDeatils} = useQuery({
+    queryKey: ["getContacts"],
+    queryFn: api.getContacts,
+    select: (response) => response?.data?.acf?.contact_options,
+    onError: (error) => {
+      console.log(error);
+    },
+  })
+
+  console.log(contactDeatils)
 
   return (
     <div className="relative bg-[#272727] text-white contact-me">
@@ -57,21 +68,21 @@ const ContactMe = () => {
               ref={headRef1}
               className="cite-with-line text-2xl font-medium mb-2"
             >
-              Contact Us
+              {contactDeatils?.heading}
             </h3>
             <h2 ref={headRef2} className="text-5xl font-bold mb-4">
-              <span className="text-gray-600">Lets</span>
+              <span className="text-gray-600">{contactDeatils?.title_section?.title}</span>
               <span className="text-white text-center">
                 {" "}
-                start
+                {contactDeatils?.title_section?.sub_title}
                 <span className="m-2">
                   <img
                     className="inline-block size-[62px] rounded-full"
-                    src="/assets/sirround.png"
+                    src={contactDeatils?.title_section?.image}
                     alt="Image Description"
                   />
                 </span>
-                the conversation
+                {contactDeatils?.title_section?.span_title}
               </span>
             </h2>
           </div>
@@ -79,39 +90,38 @@ const ContactMe = () => {
             <div className="grid grid-cols-2 h-full">
               <div className="p-2 rounded-lg flex flex-col justify-start items-start">
                 <h2 className="text-[#B6B6B6] text-[12px] font-bold mb-2">
-                  SUPPORT EMAIL
+                  {contactDeatils?.contacts?.support_email?.title}
                 </h2>
-                <p className="text-white">example@gmail.com</p>
+                <p className="text-white">{contactDeatils?.contacts?.support_email?.email}</p>
               </div>
               <div className="p-2 rounded-lg flex flex-col justify-start items-start">
                 <h2 className="text-[#B6B6B6] text-[12px] font-bold mb-2">
-                  WORK EMAIL
+                  {
+                    contactDeatils?.contacts?.work_email?.title
+                  }
                 </h2>
-                <p className="text-white">email1@example.com</p>
+                <p className="text-white">{contactDeatils?.contacts?.work_email?.email}</p>
               </div>
               <div className="p-2 rounded-lg flex flex-col justify-start items-start">
                 <h2 className="text-[#B6B6B6] text-[12px] font-bold mb-2">
-                  PHONE
+                  {contactDeatils?.contacts?.phone_number?.title}
                 </h2>
-                <p className="text-white">+1234567890</p>
+                <p className="text-white">{contactDeatils?.contacts?.phone_number?.phone_number}</p>
               </div>
-              <div className="p-2 rounded-lg flex flex-col justify-start items-start">
+              {/* <div className="p-2 rounded-lg flex flex-col justify-start items-start">
                 <h2 className="text-[#B6B6B6] text-[12px] font-bold mb-2">
                   FAX
                 </h2>
                 <p className="text-white">+1234567890</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
           <div className="bg-[#363636] h-[450px] mt-2 rounded-xl p-8">
-            <h5 className="text-[#B6B6B6] mb-3">DROP US A LINE</h5>
-            <h4 className="font-medium mb-3 text-[20px]">Lets Get Started!</h4>
+            <h5 className="text-[#B6B6B6] mb-3">{contactDeatils?.contact_form_section?.heading}</h5>
+            <h4 className="font-medium mb-3 text-[20px]">{contactDeatils?.contact_form_section?.title}</h4>
             <p className="mb-4">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which dont look even
-              slightly believable.
+              {contactDeatils?.contact_form_section?.texts}
             </p>
             <form action="">
               <input
@@ -139,7 +149,7 @@ const ContactMe = () => {
         <div className="h-full p-8">
           <img
             className="w-full h-full rounded-xl object-cover"
-            src="/assets/contactsir.jpg"
+            src={contactDeatils?.image?.image}
             alt="Contact"
           />
         </div>

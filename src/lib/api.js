@@ -33,6 +33,10 @@ const api = {
   getbrands: async () => {
     const response = await axios.get(`${baseUrl}/pages/10?_fields=acf.our_brand_options&acf_format=standard`);
     return response
+  },
+  getContacts: async () => {
+    const response = await axios.get(`${baseUrl}/pages/10?_fields=acf.contact_options&acf_format=standard`);
+    return response;
   }
 };
 
