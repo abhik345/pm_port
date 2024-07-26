@@ -10,7 +10,12 @@ const api = {
   getbanner: async () => {
     const response = await axios.get(`${baseUrl}/pages/10?_fields=acf.banner_section_options&acf_format=standard`);
     return response
-  }
+  },
+  getabout: async () => {
+    const response = await axios.get(`${baseUrl}/pages/10?_fields=acf.about_section_options&acf_format=standard`);
+    return response
+  },
+  
 };
 
 

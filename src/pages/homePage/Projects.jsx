@@ -38,6 +38,7 @@ function Projects() {
     });
   });
 
+
   useEffect(() => {
     let ctx = gsap.context(() => {
       gsap.set(".photo:not(:last-child)", {

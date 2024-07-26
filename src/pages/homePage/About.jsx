@@ -1,9 +1,9 @@
 import { useGSAP } from "@gsap/react";
-import sirAwards from "/assets/siraward.jpg";
-import aboutpng from "/assets/aboutpng.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+import api from "../../lib/api";
 
 const About = () => {
   const headRef1 = useRef();
@@ -37,37 +37,37 @@ const About = () => {
     });
   });
 
-  const awards = [
-    { title: "9th International Biennial Sweden", date: "August 2020" },
-    { title: "Neque porro quisquam est", date: "August 2020" },
-    { title: "Consectetur adipisci velit", date: "August 2020" },
-    { title: "Contrary to popular belief", date: "August 2020" },
-    { title: "The standard chunk of Lorem", date: "August 2020" },
-    { title: "Passages of Lorem Ipsum.", date: "August 2020" },
-  ];
+  const { data: aboutData } = useQuery({
+    queryKey: ["getabout"],
+    queryFn: api.getabout,
+    select: (response) => response?.data?.acf?.about_section_options,
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 
   return (
     <section>
       <div className="container mx-auto px-2 py-6">
-        <h3
+      <h3
           ref={headRef1}
           className="heading-with-line text-[20px] font-medium"
         >
           About me
         </h3>
         <h2 ref={headRef2} className="main-heading text-[56px] font-bold mb-4">
-          <span className="text-[#959595]">Awar</span>
-          <span>ds & Achievement</span>
+          <span className="text-[#959595]">{aboutData?.title_section?.title}</span>
+          <span>{aboutData?.title_section?.sub_title}</span>
         </h2>
         <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 p-4">
           <div className="w-full relative p-4">
             <img
-              src={sirAwards}
+              src={aboutData?.image_section?.image}
               alt="Award"
               className="w-2/3 h-auto rounded-lg"
             />
-            <div className="absolute  xl:bottom-10 xl:left-48 2xl:-bottom-14 2xl:left-48 bg-white rounded-md shadow-lg p-4 w-3/5">
-              <blockquote className=" mt-4 text-lg italic">
+            <div className="absolute xl:bottom-10 xl:left-48 2xl:-bottom-14 2xl:left-48 bg-white rounded-md shadow-lg p-4 w-3/5">
+              <blockquote className="mt-4 text-lg italic">
                 <svg
                   className="absolute -top-6 -left-3 sm:-left-6 md:-left-8 lg:-left-14 xl:-left-11 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
                   viewBox="0 0 16 16"
@@ -80,26 +80,22 @@ const About = () => {
                     fill="#DCA514"
                   ></path>
                 </svg>
-                “Life is a journey, where there are potholes and speed-breakers,
-                and beautiful sceneries too!”
+                {aboutData?.image_section?.about_text}
               </blockquote>
               <p className="mt-2 text-right text-[#DCA514]">
-                — Pramod K Maloo
+                {aboutData?.image_section?.name}
               </p>
             </div>
           </div>
           <div className="w-full p-4 grid grid-cols-2 gap-6">
-            {awards.map((award, index) => (
+            {aboutData?.about_options?.map((option, index) => (
               <div key={index} className="bg-gray-100 p-8 flex rounded-lg shadow">
-              <div className="mr-3 h-8 w-9">
-              <img
-              src={aboutpng}
-              className=""
-              />
-              </div>
+                <div className="mr-3 h-8 w-9">
+                  <img src={option.image_logo} alt="Logo" className="" />
+                </div>
                 <div className="flex flex-col">
-                <h3 className="text-xl text-wrap hea font-semibold mb-2">{award.title}</h3>
-                <p className="text-gray-600 text-[] about-with-line">{award.date}</p>
+                  <h3 className="text-xl text-wrap font-semibold mb-2">{option.title}</h3>
+                  <p className="text-gray-600">{option.date_text}</p>
                 </div>
               </div>
             ))}
@@ -107,7 +103,6 @@ const About = () => {
         </div>
       </div>
     </section>
-
   );
 };
 
