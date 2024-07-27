@@ -1,9 +1,9 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
-import { useQuery } from "@tanstack/react-query";
 import api from "../../lib/api";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useQuery } from "@tanstack/react-query";
+import { useRef } from "react";
 
 const About = () => {
   const headRef1 = useRef();
@@ -48,28 +48,31 @@ const About = () => {
 
   return (
     <section>
-      <div className="container mx-auto px-2 py-6">
-      <h3
+      <div className="container mx-auto px-4 py-6 md:px-6 lg:px-8">
+        <h3
           ref={headRef1}
-          className="heading-with-line text-[20px] font-medium"
+          className="heading-with-line text-[20px] font-medium md:text-[24px]"
         >
           About me
         </h3>
-        <h2 ref={headRef2} className="main-heading text-[56px] font-bold mb-4">
+        <h2
+          ref={headRef2}
+          className="main-heading text-[36px] font-bold mb-4 md:text-[48px] lg:text-[56px]"
+        >
           <span className="text-[#959595]">{aboutData?.title_section?.title}</span>
           <span>{aboutData?.title_section?.sub_title}</span>
         </h2>
-        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 p-4">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 p-4">
           <div className="w-full relative p-4">
             <img
               src={aboutData?.image_section?.image}
               alt="Award"
-              className="w-2/3 h-auto rounded-lg"
+              className="w-full h-auto rounded-lg"
             />
-            <div className="absolute xl:bottom-10 xl:left-48 2xl:-bottom-14 2xl:left-48 bg-white rounded-md shadow-lg p-4 w-3/5">
+            <div className="absolute bottom-4 md:bottom-10 left-4 md:left-12 lg:left-28 bg-white rounded-md shadow-lg p-4 w-4/5 md:w-3/5 lg:w-4/5">
               <blockquote className="mt-4 text-lg italic">
                 <svg
-                  className="absolute -top-6 -left-3 sm:-left-6 md:-left-8 lg:-left-14 xl:-left-11 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
+                  className="absolute -top-6 -left-3 md:-left-6 lg:-left-8 w-6 h-6 md:w-8 md:h-8 lg:w-14 lg:h-14 text-[#DCA514] dark:text-neutral-700"
                   viewBox="0 0 16 16"
                   fill="#DCA514"
                   xmlns="http://www.w3.org/2000/svg"
@@ -87,14 +90,14 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="w-full p-4 grid grid-cols-2 gap-6">
+          <div className="w-full p-4 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {aboutData?.about_options?.map((option, index) => (
-              <div key={index} className="bg-gray-100 p-8 flex rounded-lg shadow">
-                <div className="mr-3 h-8 w-9">
-                  <img src={option.image_logo} alt="Logo" className="" />
+              <div key={index} className="bg-gray-100 p-6 md:p-8 flex rounded-lg shadow">
+                <div className="mr-3 h-8 w-8 md:h-12 md:w-12">
+                  <img src={option.image_logo} alt="Logo" className="w-full h-auto" />
                 </div>
                 <div className="flex flex-col">
-                  <h3 className="text-xl text-wrap font-semibold mb-2">{option.title}</h3>
+                  <h3 className="text-lg md:text-xl font-semibold mb-2">{option.title}</h3>
                   <p className="text-gray-600">{option.date_text}</p>
                 </div>
               </div>

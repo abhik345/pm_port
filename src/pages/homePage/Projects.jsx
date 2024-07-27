@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
+
+import PropTypes from "prop-types";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import api from "../../lib/api";
+import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 import { useQuery } from "@tanstack/react-query";
-import api from "../../lib/api";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -102,7 +103,7 @@ function Projects() {
       yoyo: true,
       duration: 0.15,
       ease: "sine.in",
-      onComplete: function() {
+      onComplete: function () {
         gsap.to(this.targets(), {
           x: 0,
           duration: 1.5,
@@ -149,7 +150,7 @@ function Projects() {
                     />
                     <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
                     <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
-                      <h3 className="  absolute  flex text-center font-bold text-2xl">
+                      <h3 className="  absolute  flex text-center font-bold text-[1rem] xl:text-[1.10rem] lg:text-[1rem] md: text-xl">
                         {book?.title}
                       </h3>
                       <div className="para_part absolute bottom-10  z-1 w-max">

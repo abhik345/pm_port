@@ -36,3 +36,14 @@ html {
     margin-top: 128px !important; 
   }
   
+
+  ytp-gradient-top {
+    opacity: 0;
+  }
+
+  ytp-chrome-top ytp-show-cards-title{
+    opacity: 0;
+  }
+  ytp-watermark yt-uix-sessionlink {
+    opacity: 0;
+  }

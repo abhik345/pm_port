@@ -1,9 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home } from "../pages/index.js";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Loading from "../components/loading/Loading.jsx";
-import InnerGenericPage from "../pages/InnerGenericPage.jsx";
+
 import Books from "../pages/Books.jsx";
+import { Home } from "../pages/index.js";
+import InnerGenericPage from "../pages/InnerGenericPage.jsx";
+import Loading from "../components/loading/Loading.jsx";
+
 const ProjectRoutes = () => {
   const [isLoading, setIsLoading] = useState(true);
  

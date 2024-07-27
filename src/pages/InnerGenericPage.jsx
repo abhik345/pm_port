@@ -1,9 +1,12 @@
 /* eslint-disable no-useless-escape */
-import { useQuery } from "@tanstack/react-query";
+
+import { useEffect, useRef } from "react";
+
 import Layout from "../components/layout/Layout";
-import { useParams } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import ReactPlayer from "react-player";
 import api from "../lib/api";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const InnerGenericPage = () => {
   const { item } = useParams();
@@ -32,6 +35,9 @@ const InnerGenericPage = () => {
   };
 
   const videoID = getYouTubeID(innerDetails?.video_url);
+  const videoUrl = videoID ? `https://www.youtube.com/watch?v=${videoID}` : null;
+
+  console.log(videoUrl)
 
   return (
     <Layout>
@@ -60,21 +66,31 @@ const InnerGenericPage = () => {
       </div>
 
       <div className="container w-4/5 m-auto rounded-2xl overflow-hidden video_section">
-        {videoID && (
-          <iframe
-            
+        {videoUrl && (
+          <ReactPlayer
+            url={videoUrl}
             width="100%"
             height="450px"
-            src={`https://www.youtube.com/embed/${videoID}?controls=0`}
-            frameBorder="0"
-            allowFullScreen
-            title="Video"
-          ></iframe>
+            controls={false}
+            config={{
+              youtube: {
+                playerVars: {
+                  modestbranding: 1,
+                  controls: 0,
+                  rel: 0,
+                  iv_load_policy: 3,
+                  disablekb: 1,
+                  fs: 0,
+                  playsinline: 1,
+                },
+              },
+            }}
+          />
         )}
       </div>
 
       <div className="text_section container w-auto m-auto p-20">
-        <div className="borcder_text border-4 border-yellow-500 p-10 m-auto justify-center relative">
+        <div className="border_text border-4 border-yellow-500 p-10 m-auto justify-center relative">
           <h4 className="absolute -top-6 bg-white py-1 px-5 text-3xl font-semibold">
             {"Pramod's Take"}
           </h4>

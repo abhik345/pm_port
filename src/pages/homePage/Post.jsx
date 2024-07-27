@@ -1,14 +1,16 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef, useState } from "react";
+
 import { Autoplay } from "swiper/modules";
-import { useGSAP } from "@gsap/react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import PropTypes from "prop-types";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import api from "../../lib/api";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useQuery } from "@tanstack/react-query";
 
 const Post = () => {
   const headRef1 = useRef(null);
@@ -63,7 +65,7 @@ const Post = () => {
   return (
     <>
       <section>
-        <div className="container mx-auto px-2 py-6">
+        <div className="container mx-10 px-2 py-6">
           <h3
             ref={headRef1}
             className="heading-with-line text-[20px] font-medium"
