@@ -1,9 +1,10 @@
 import "swiper/css";
+import "swiper/css/pagination";
 
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef, useState } from "react";
 
-import { Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -65,7 +66,7 @@ const Post = () => {
   return (
     <>
       <section>
-        <div className="container mx-10 px-2 py-6">
+        <div className="container mx-auto px-2 py-6">
           <h3
             ref={headRef1}
             className="heading-with-line text-[20px] font-medium"
@@ -83,24 +84,26 @@ const Post = () => {
           </h2>
         </div>
         <Swiper
-          slidesPerView={5}
+          slidesPerView={3}
+          spaceBetween={30}
           pagination={{ clickable: true }}
           autoplay={{ delay: 1500 }}
           loop={true}
-          modules={[Autoplay]}
+          modules={[Autoplay, Pagination]}
           className="mySwiper"
         >
-          {postData && postData?.map((postData, index) => (
-            <SwiperSlide key={index}>
-              <HoverCard
-                image={postData.thumbnail}
-                text={postData.content}
-                index={index}
-                icon={postData.social_icon}
-                link={postData.url}
-              />
-            </SwiperSlide>
-          ))}
+          {postData &&
+            postData?.map((postData, index) => (
+              <SwiperSlide key={index}>
+                <HoverCard
+                  image={postData.thumbnail}
+                  text={postData.content}
+                  index={index}
+                  icon={postData.social_icon}
+                  link={postData.url}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </section>
     </>
