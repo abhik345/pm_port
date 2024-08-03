@@ -59,7 +59,7 @@ const ContactMe = () => {
   })
 
   return (
-    <div className="relative bg-[#272727] text-white contact-me">
+    <div className=" bg-[#272727] text-white contact-me">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-6 ">
         <div className="p-8">
           <div>
@@ -147,7 +147,7 @@ const ContactMe = () => {
         </div>
         <div className="h-[950px] p-8">
           <img
-            className="w-[80%] h-[800px] rounded-xl object-cover"
+            className="w-full h-[800px] rounded-xl object-cover"
             src={contactDeatils?.image?.image}
             alt="Contact"
           />
