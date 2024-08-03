@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
+
 import "swiper/css";
 import "swiper/css/pagination";
 
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -12,6 +13,7 @@ import api from "../../lib/api";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useQuery } from "@tanstack/react-query";
+import { useRef } from "react";
 
 const Post = () => {
   const headRef1 = useRef(null);
@@ -63,8 +65,7 @@ const Post = () => {
     },
   });
 
-  
-  const {data : linkedinposts} =useQuery({
+  const { data: linkedinposts } = useQuery({
     queryKey: ["getlinkedInPosts"],
     queryFn: api.getlinkedInPosts,
     select: (response) => response?.data,
@@ -73,7 +74,7 @@ const Post = () => {
     },
   });
 
-  console.log(linkedinposts)
+  console.log(linkedinposts);
 
   return (
     <>
@@ -131,39 +132,16 @@ const Post = () => {
               modules={[Autoplay, Pagination]}
               className="mySwiper"
             >
-              {postData &&
-                postData?.map((postData, index) => (
+              {linkedinposts &&
+                linkedinposts?.map((postData, index) => (
                   <SwiperSlide key={index}>
-                    <div className="main_box">
-                      <div className="post_img_box relative ">
-                        <img
-                          className="post_img w-screen object-cover h-[400px]"
-                          src="/assets/post1.jpg"
-                        />
-                        <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute contents-[*] bottom-0 left-0 right-0 items-center  cursor-pointer py-10 px-6 ">
-                          <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
-                            <img src="/assets/linkedin.png" />
-                          </div>
-                          <p className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide ">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Suscipit, natus quia quasi beatae, velit ad
-                            reiciendis, autem quaerat illo delectus voluptate
-                            minima repellendus laboriosam! Labore sint
-                            repudiandae, dolore voluptatem ab nisi delectus hic,
-                            itaque libero deserunt laborum unde? At consequuntur
-                            sed voluptates similique minima aliquid iusto
-                            tenetur ad alias officia.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <HoverCard
-                  image={postData.thumbnail}
-                  text={postData.content}
-                  index={index}
-                  icon={postData.social_icon}
-                  link={postData.url}
-                /> */}
+                    <LinkedInHoverCard
+                      image={postData.thumbnail}
+                      text={postData.excerpt}
+                      index={index}
+                      icon={postData.social_icon}
+                      link={postData.url}
+                    />
                   </SwiperSlide>
                 ))}
             </Swiper>
@@ -187,36 +165,13 @@ const Post = () => {
                 {postData &&
                   postData?.map((postData, index) => (
                     <SwiperSlide key={index}>
-                      <div className="main_box">
-                        <div className="post_img_box relative ">
-                          <img
-                            className="post_img w-screen object-cover h-[400px]"
-                            src="/assets/post2.jpg"
-                          />
-                          <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute contents-[*] bottom-0 left-0 right-0 items-center  cursor-pointer py-10 px-6 ">
-                            <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
-                              <img src="/assets/instagram.png" />
-                            </div>
-                            <p className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide ">
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Suscipit, natus quia quasi beatae, velit ad
-                              reiciendis, autem quaerat illo delectus voluptate
-                              minima repellendus laboriosam! Labore sint
-                              repudiandae, dolore voluptatem ab nisi delectus
-                              hic, itaque libero deserunt laborum unde? At
-                              consequuntur sed voluptates similique minima
-                              aliquid iusto tenetur ad alias officia.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      {/* <HoverCard
-                  image={postData.thumbnail}
-                  text={postData.content}
-                  index={index}
-                  icon={postData.social_icon}
-                  link={postData.url}
-                /> */}
+                      <InstagramHoverCard
+                        image={postData.thumbnail}
+                        text={postData.excerpt}
+                        index={index}
+                        icon={postData.social_icon}
+                        link={postData.url}
+                      />
                     </SwiperSlide>
                   ))}
               </Swiper>
@@ -227,45 +182,63 @@ const Post = () => {
     </>
   );
 };
-
-function HoverCard({ image, text, index, icon, link }) {
-  const [isHovered, setIsHovered] = useState(false);
-
+const LinkedInHoverCard = ({ image, text, icon, link }) => {
   return (
-    <Link
-      className="overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      to={link}
-      target="_blank"
-    >
-      <img
-        className="w-full h-[400px] object-cover transition-opacity duration-300"
-        src={image}
-        alt={`Post ${index + 1}`}
-        style={{ opacity: isHovered ? 5 : 1 }}
-      />
-      {isHovered && (
-        <div className="relative">
-          <div className=" background_after absolute content={*} bottom-0 top-0 w-full h-full  bg-black  p-4 flex items-center justify-center text-center flex-col text-white text-lg">
-            <img
-              className=" post_icon fill-white h-8 w-8 "
-              src={icon}
-              alt="Icon"
-            />
-            <div dangerouslySetInnerHTML={{ __html: text }} />
+    <Link className="overflow-hidden" to={link} target="_blank">
+      <div className="main_box">
+        <div className="post_img_box relative ">
+          <img
+            className="post_img w-screen object-cover h-[400px]"
+            src={image}
+          />
+          <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute contents-[*] bottom-0 left-0 right-0 items-center  cursor-pointer py-10 px-6 ">
+            <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
+              <img src="/assets/linkedin.png" />
+            </div>
+            <p className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide ">
+              {text}
+            </p>
           </div>
         </div>
-      )}
+      </div>
     </Link>
   );
-}
+};
 
-HoverCard.propTypes = {
+LinkedInHoverCard.propTypes = {
   image: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  link: PropTypes.string.isRequired,
+};
+
+const InstagramHoverCard = ({ image, text, icon, link }) => {
+  return (
+    <Link className="overflow-hidden" to={link} target="_blank">
+      <div className="main_box">
+        <div className="post_img_box relative ">
+          <img
+            className="post_img w-screen object-cover h-[400px]"
+            src={image}
+          />
+          <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute contents-[*] bottom-0 left-0 right-0 items-center  cursor-pointer py-10 px-6 ">
+            <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
+              <img src="/assets/instagram.png" />
+            </div>
+            <p className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide ">
+              {text}
+            </p>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
+InstagramHoverCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  icon: PropTypes.string,
   link: PropTypes.string.isRequired,
 };
 

@@ -68,7 +68,16 @@ function Projects() {
     },
   });
 
-  console.log(bookData);
+  const { data: bookheading } = useQuery({
+    queryKey: ["getbookheading"],
+    queryFn: api.getbookheading,
+    select: (response) => response.data?.acf,
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  console.log(bookheading);
 
   useEffect(() => {
     const animateOddLines = () => {
@@ -84,7 +93,7 @@ function Projects() {
             x: 0,
             duration: 1.5,
             ease: "elastic.out(1, 0.3)",
-            onComplete: animateOddLines, // Call animateOddLines again when the elastic animation completes
+            onComplete: animateOddLines,
           });
         },
       });
@@ -103,7 +112,7 @@ function Projects() {
             x: 0,
             duration: 1.5,
             ease: "elastic.out(1, 0.3)",
-            onComplete: animateEvenLines, // Call animateEvenLines again when the elastic animation completes
+            onComplete: animateEvenLines,
           });
         },
       });
@@ -147,14 +156,18 @@ function Projects() {
             ref={headRef1}
             className="font-bold text-center m-0 text-[20px] text-[#FFFFFF]"
           >
-            Project
+            {bookheading?.chapter_options?.heading}
           </h3>
           <h2
             ref={headRef2}
             className="main-heading text-[56px] font-bold mb-4"
           >
-            <span className="text-[#959595]">Lets Empo</span>
-            <span className="text-[#FFFFFF]">wer Business Growth</span>
+            <span className="text-[#959595]">
+              {bookheading?.chapter_options?.title_section?.title}
+            </span>{" "}
+            <span className="text-[#FFFFFF]">
+              {bookheading?.chapter_options?.title_section?.sub_title}
+            </span>
           </h2>
         </div>
         <div className="img_section flex justify-center">

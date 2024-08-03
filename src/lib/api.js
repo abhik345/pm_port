@@ -63,6 +63,11 @@ const api = {
   getlinkedInPosts : async () => {
     const response = await axios.get(`${baseUrl}/linkdin-posts`);
     return response;
+  },
+
+  getbookheading : async () => {
+    const response = await axios.get(`${baseUrl}/pages/10?_fields=acf.chapter_options`);
+    return response
   }
 };
 
