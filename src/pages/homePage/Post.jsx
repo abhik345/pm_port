@@ -74,7 +74,15 @@ const Post = () => {
     },
   });
 
-  console.log(linkedinposts);
+  const { data: instaposts } = useQuery({
+    queryKey: ["getinstaposts"],
+    queryFn: api.getinstaposts,
+    select: (response) => response?.data,
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
 
   return (
     <>
@@ -137,7 +145,7 @@ const Post = () => {
                   <SwiperSlide key={index}>
                     <LinkedInHoverCard
                       image={postData.thumbnail}
-                      text={postData.excerpt}
+                      text={postData.content}
                       index={index}
                       icon={postData.social_icon}
                       link={postData.url}
@@ -162,12 +170,12 @@ const Post = () => {
                 modules={[Autoplay, Pagination]}
                 className="mySwiper"
               >
-                {postData &&
-                  postData?.map((postData, index) => (
+                {instaposts &&
+                  instaposts?.map((postData, index) => (
                     <SwiperSlide key={index}>
                       <InstagramHoverCard
                         image={postData.thumbnail}
-                        text={postData.excerpt}
+                        text={postData.content}
                         index={index}
                         icon={postData.social_icon}
                         link={postData.url}
@@ -195,9 +203,10 @@ const LinkedInHoverCard = ({ image, text, icon, link }) => {
             <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
               <img src="/assets/linkedin.png" />
             </div>
-            <p className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide ">
-              {text}
-            </p>
+            <p
+              className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
           </div>
         </div>
       </div>
@@ -225,9 +234,10 @@ const InstagramHoverCard = ({ image, text, icon, link }) => {
             <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
               <img src="/assets/instagram.png" />
             </div>
-            <p className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide ">
-              {text}
-            </p>
+            <p
+              className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
           </div>
         </div>
       </div>

@@ -68,6 +68,11 @@ const api = {
   getbookheading : async () => {
     const response = await axios.get(`${baseUrl}/pages/10?_fields=acf.chapter_options`);
     return response
+  },
+
+  getinstaposts : async () => {
+    const response = await axios.get(`${baseUrl}/insta-posts`);
+    return response;
   }
 };
 
