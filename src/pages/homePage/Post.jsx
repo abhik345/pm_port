@@ -63,13 +63,25 @@ const Post = () => {
     },
   });
 
+  
+  const {data : linkedinposts} =useQuery({
+    queryKey: ["getlinkedInPosts"],
+    queryFn: api.getlinkedInPosts,
+    select: (response) => response?.data,
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
+  console.log(linkedinposts)
+
   return (
     <>
       <section>
-        <div className="container mx-auto px-2 py-6">
+        <div className="container mx-auto px-2 py-6 text-left ">
           <h3
             ref={headRef1}
-            className="heading-with-line text-[20px] font-medium"
+            className="heading-with-line text-[20px] font-medium text-left"
           >
             {postsectionHeading?.posts_options?.heading}
           </h3>
@@ -83,28 +95,134 @@ const Post = () => {
             {postsectionHeading?.posts_options?.title_section?.sub_title}
           </h2>
         </div>
-        <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 1500 }}
-          loop={true}
-          modules={[Autoplay, Pagination]}
-          className="mySwiper"
-        >
-          {postData &&
-            postData?.map((postData, index) => (
-              <SwiperSlide key={index}>
-                <HoverCard
+        <div className="swiper_section flex gap-4 items-center">
+          <div className="left_text_Linkedin flex justify-end w-[10%]">
+            <img src="assets/Linkedin_text.png" />
+          </div>
+          <div className="swiper_part m-auto w-[90%]">
+            <Swiper
+              // slidesPerView={4}
+              // spaceBetween={30}
+              breakpoints={{
+                580: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 40,
+                },
+                1024: {
+                  slidesPerView: 4,
+                  spaceBetween: 30,
+                },
+                1400: {
+                  slidesPerView: 4,
+                  spaceBetween: 30,
+                },
+                1920: {
+                  slidesPerView: 4,
+                  spaceBetween: 30,
+                },
+              }}
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 1500 }}
+              loop={true}
+              modules={[Autoplay, Pagination]}
+              className="mySwiper"
+            >
+              {postData &&
+                postData?.map((postData, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="main_box">
+                      <div className="post_img_box relative ">
+                        <img
+                          className="post_img w-screen object-cover h-[400px]"
+                          src="/assets/post1.jpg"
+                        />
+                        <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute contents-[*] bottom-0 left-0 right-0 items-center  cursor-pointer py-10 px-6 ">
+                          <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
+                            <img src="/assets/linkedin.png" />
+                          </div>
+                          <p className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide ">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Suscipit, natus quia quasi beatae, velit ad
+                            reiciendis, autem quaerat illo delectus voluptate
+                            minima repellendus laboriosam! Labore sint
+                            repudiandae, dolore voluptatem ab nisi delectus hic,
+                            itaque libero deserunt laborum unde? At consequuntur
+                            sed voluptates similique minima aliquid iusto
+                            tenetur ad alias officia.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    {/* <HoverCard
                   image={postData.thumbnail}
                   text={postData.content}
                   index={index}
                   icon={postData.social_icon}
                   link={postData.url}
-                />
-              </SwiperSlide>
-            ))}
-        </Swiper>
+                /> */}
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          </div>
+        </div>
+        <div className="instagram_swiper  mt-16">
+          <div className="swiper_section flex flex-row-reverse gap-4 items-center">
+            <div className="left_text_Linkedin flex justify-start w-[10%]">
+              <img src="assets/Instagram_text.png" />
+            </div>
+            <div className="swiper_part m-auto w-[90%]">
+              <Swiper
+                slidesPerView={4}
+                spaceBetween={20}
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 105000 }}
+                loop={true}
+                modules={[Autoplay, Pagination]}
+                className="mySwiper"
+              >
+                {postData &&
+                  postData?.map((postData, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="main_box">
+                        <div className="post_img_box relative ">
+                          <img
+                            className="post_img w-screen object-cover h-[400px]"
+                            src="/assets/post2.jpg"
+                          />
+                          <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute contents-[*] bottom-0 left-0 right-0 items-center  cursor-pointer py-10 px-6 ">
+                            <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
+                              <img src="/assets/instagram.png" />
+                            </div>
+                            <p className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide ">
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Suscipit, natus quia quasi beatae, velit ad
+                              reiciendis, autem quaerat illo delectus voluptate
+                              minima repellendus laboriosam! Labore sint
+                              repudiandae, dolore voluptatem ab nisi delectus
+                              hic, itaque libero deserunt laborum unde? At
+                              consequuntur sed voluptates similique minima
+                              aliquid iusto tenetur ad alias officia.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      {/* <HoverCard
+                  image={postData.thumbnail}
+                  text={postData.content}
+                  index={index}
+                  icon={postData.social_icon}
+                  link={postData.url}
+                /> */}
+                    </SwiperSlide>
+                  ))}
+              </Swiper>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
@@ -125,12 +243,16 @@ function HoverCard({ image, text, index, icon, link }) {
         className="w-full h-[400px] object-cover transition-opacity duration-300"
         src={image}
         alt={`Post ${index + 1}`}
-        style={{ opacity: isHovered ? 0.5 : 1 }}
+        style={{ opacity: isHovered ? 5 : 1 }}
       />
       {isHovered && (
         <div className="relative">
-          <div className="absolute bottom-20 bg-black bg-opacity-40 p-4 flex items-center justify-center text-center flex-col text-white text-lg">
-            <img className="h-8 w-8" src={icon} alt="Icon" />
+          <div className=" background_after absolute content={*} bottom-0 top-0 w-full h-full  bg-black  p-4 flex items-center justify-center text-center flex-col text-white text-lg">
+            <img
+              className=" post_icon fill-white h-8 w-8 "
+              src={icon}
+              alt="Icon"
+            />
             <div dangerouslySetInnerHTML={{ __html: text }} />
           </div>
         </div>

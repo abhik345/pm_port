@@ -1,7 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import api from "../../lib/api";
-
-
+import { useQuery } from "@tanstack/react-query";
 
 const Footer = () => {
   const {data : footerDetails} = useQuery({
@@ -24,12 +22,13 @@ const Footer = () => {
     return (
       <>
         <footer className="bg-[#272727] h-full">
-          <div className="container mx-auto h-full">
-            <div className="flex flex-row items-center justify-between py-4">
+          <div className="container mx-auto px-6 h-full">
+            <div className="flex flex-row items-center justify-between py-4 md:mx-8">
               <div>
                 <img
                   src={footerDetails?.signature_image?.signature}
                   alt="Signature"
+                  className="h-[50%] w-[50%]"
                 />
               </div>
               <div className="flex flex-row gap-3">

@@ -133,7 +133,7 @@ function Projects() {
           </h2>
         </div>
         <div className="img_section flex justify-center">
-          <div className="row_section container w-full m-0 pl-10 pr-10 flex gap-4 overflow-hidden items-center">
+          <div className=" lg:p-0  row_section container w-full m-0 pl-10 pr-10 flex gap-4 overflow-hidden items-center">
             {bookData &&
               bookData?.map((book) => (
                 <div
@@ -150,7 +150,7 @@ function Projects() {
                     />
                     <div className="absolute inset-0 before:bg-gradient-to-t before:from-black before:to-transparent before:absolute before:inset-0 before:z-10"></div>
                     <div className="category_heading  absolute inset-y-0  w-auto z-10 left-6 right-6">
-                      <h3 className="  absolute  flex text-center font-bold text-[1rem] xl:text-[1.10rem] lg:text-[1rem] md: text-xl">
+                      <h3 className="  absolute  flex text-center font-bold text-[1.15rem]">
                         {book?.title}
                       </h3>
                       <div className="para_part absolute bottom-10  z-1 w-max">
@@ -164,7 +164,7 @@ function Projects() {
                           {book?.items.map((item) => (
                             <li
                               key={item.id}
-                              className="underline cursor-pointer mb-1"
+                              className="content_text v8 underline cursor-pointer mb-1"
                               onClick={() =>
                                 handleClick(book.subtitle, item.title, book.id)
                               }

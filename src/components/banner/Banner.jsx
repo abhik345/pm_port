@@ -1,11 +1,10 @@
-import bannerImage from "/assets/banner1.jpg";
-import { gsap } from "gsap";
-import { useRef, useEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LazyLoad from "react-lazyload";
-import api from "../../lib/api";
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef } from "react";
+
 import PropTypes from "prop-types";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import api from "../../lib/api";
+import { gsap } from "gsap";
+import { useQuery } from "@tanstack/react-query";
 
 const Banner = () => {
   const { data: bannerData } = useQuery({
@@ -28,12 +27,15 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[800px] flex items-center justify-end">
+    <section className="relative w-full h-[700px] object-cover flex items-center justify-end">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat filter"
-        style={{ backgroundImage: `url(${bannerImage})` }}
+        style={{ backgroundImage: `url(${bannerData?.banner_section_options?.image_section?.image})` }}
+        // style={{ backgroundImage: `url(${banner2})` }}
+
+        
       >
-        <LazyLoad height={200} offset={100}>
+        {/* <LazyLoad height={200} offset={100}>
           <img
             src={bannerData?.banner_section_options?.image_section?.image}
             alt="Banner"
@@ -42,9 +44,11 @@ const Banner = () => {
               gsap.to(".hidden", { opacity: 1 });
             }}
           />
-        </LazyLoad>
+        </LazyLoad> */}
       </div>
-      <div className="relative lg:max-w-2xl max-w-3xl px-4 sm:px-6 lg:px-4 lg:right-32 py-16 text-left right-10 sm:right-20 md:right-40">
+      {/* <div className="relative 2xl:right-9 xl:right-9  lg:max-w-2xl max-w-3xl px-4 sm:px-6 lg:px-4 lg:right-1 py-16 text-left right-9 sm:right-9 md:right-9"> */}
+      <div className="relative -left-[46%] right-0 w-[45%]">
+
         <blockquote className="relative">
           <svg
             className="absolute -top-6 left-2.5 sm:-left-6 md:-left-8 lg:-left-16 xl:-left-16 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-[#DCA514] dark:text-neutral-700"
@@ -142,7 +146,7 @@ const TextRevealAnimation = ({ total }) => {
       <p ref={textRef} className="text-white text-container words-slide-up">
         {textArray.map((word, wordIndex) => (
           <>
-            <span key={wordIndex} className="inline-block char sm:text-md">
+            <span key={wordIndex} className="inline-block char md:text-3xl sm:text-md">
               {word}
             </span>
             <span className="mx-1"></span>

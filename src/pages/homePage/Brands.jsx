@@ -18,6 +18,8 @@ const Brands = () => {
     },
   });
 
+  console.log(brandData)
+
   const headRef1 = useRef();
   const headRef2 = useRef();
 
@@ -70,7 +72,7 @@ const Brands = () => {
                 </span>
                 <span>{brandData?.title_section?.sub_title}</span>
               </h2>
-              <p className="mt-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-[1.15rem] md:max-w-2xl">
+              <p className="mt-4 text-sm sm:text-base md:text-sm lg:text-xl xl:text-[1.15rem] md:max-w-2xl">
                 {brandData?.text}
               </p>
             </div>
@@ -80,28 +82,55 @@ const Brands = () => {
               <Link
                 to={item.brand_url}
                 target="_blank"
-                className="bg-inherit flex flex-col items-center justify-between border border-opacity-20 border-white rounded-xl p-4 hover:bg-gray-800 transition duration-300"
+                className="bg-inherit flex flex-col items-center justify-between border border-opacity-20 border-white rounded-xl  hover:bg-gray-800 transition duration-300"
                 key={index}
+
               >
-                <div className="flex flex-col items-start">
-                  <div className="h-24 w-24 md:h-32 md:w-32 lg:h-32 lg:w-32">
+                <div className="flip-card w-full ">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front">
+                    <div className="h-56 w-56 flex mx-auto items-center md:h-32 md:w-32 lg:h-48 lg:w-auto">
                     <img
                       src={item.brand_logo}
                       alt={item.brand_name}
-                      className="w-full h-auto"
+                      className="w-auto h-auto object-cover"
                     />
                   </div>
-                  <h2 className="text-lg sm:text-xl md:text-2xl lg:text-[1.1rem] font-semibold text-center">
+                  <h2 className="text-lg text-center sm:text-xl md:text-4xl lg:text-[1.7rem] font- ">
                     {item.brand_name}
                   </h2>
-                  <TruncatedText text={item.brand_text} maxLength={70} />
-                  {/* <p>{item.brand_text}</p> */}
+                  {/* <TruncatedText text={item.brand_text} className=" w-[80%] flex m-auto text-center text-lg font-medium " maxLength={76} /> */}
+                  
+                    </div>
+                    <div className="flip-card-back">
+                      <div className="flex justify-center flex-wrap px-2.5 w-full">
+                        <p className="line-clamp-9">{item.brand_text}</p>
+                        <button className="bg-white text-black rounded-full hover:bg-gray-200 p-3 chevron-button mt-4">
+                          <ChevronRight />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-end w-full">
+                {/* <div className="flex flex-col items-start">
+                  <div className="h-44 w-44 flex items-center md:h-32 md:w-32 lg:h-32 lg:w-32">
+                    <img
+                      src={item.brand_logo}
+                      alt={item.brand_name}
+                      className="w-auto h-auto object-cover"
+                    />
+                  </div>
+                  <h2 className="text-lg text-left sm:text-xl md:text-2xl lg:text-[1.1rem] font-semibold ">
+                    {item.brand_name}
+                  </h2>
+                  <TruncatedText text={item.brand_text} className=" text-lg font-medium " maxLength={70} />
+                  
+                </div> */}
+                {/* <div className="flex justify-end w-full">
                   <button className="bg-white text-black rounded-full hover:bg-gray-200 p-3 chevron-button">
                     <ChevronRight />
                   </button>
-                </div>
+                </div> */}
               </Link>
             ))}
         </div>

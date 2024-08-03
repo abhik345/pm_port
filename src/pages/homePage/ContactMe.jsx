@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
+
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useQuery } from "@tanstack/react-query";
 import api from "../../lib/api";
+import gsap from "gsap";
+import { useQuery } from "@tanstack/react-query";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,7 +62,7 @@ const ContactMe = () => {
 
   return (
     <div className="relative bg-[#272727] text-white contact-me">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4 ">
         <div className="p-8">
           <div>
             <h3
@@ -86,9 +87,9 @@ const ContactMe = () => {
               </span>
             </h2>
           </div>
-          <div className="bg-[#363636] h-[200px] rounded-xl p-4">
-            <div className="grid grid-cols-2 h-full">
-              <div className="p-2 rounded-lg flex flex-col justify-start items-start">
+          <div className="bg-[#363636] h-[100px] rounded-xl p-4">
+            <div className="grid grid-cols-2 h-full lg:flex flex-wrap md">
+              <div className="p-2 rounded-lg flex flex-col justify-start items-start ">
                 <h2 className="text-[#B6B6B6] text-[12px] font-bold mb-2">
                   {contactDeatils?.contacts?.support_email?.title}
                 </h2>
@@ -102,12 +103,12 @@ const ContactMe = () => {
                 </h2>
                 <p className="text-white">{contactDeatils?.contacts?.work_email?.email}</p>
               </div>
-              <div className="p-2 rounded-lg flex flex-col justify-start items-start">
+              {/* <div className="p-2 rounded-lg flex flex-col justify-start items-start">
                 <h2 className="text-[#B6B6B6] text-[12px] font-bold mb-2">
                   {contactDeatils?.contacts?.phone_number?.title}
                 </h2>
                 <p className="text-white">{contactDeatils?.contacts?.phone_number?.phone_number}</p>
-              </div>
+              </div> */}
               {/* <div className="p-2 rounded-lg flex flex-col justify-start items-start">
                 <h2 className="text-[#B6B6B6] text-[12px] font-bold mb-2">
                   FAX
@@ -118,7 +119,7 @@ const ContactMe = () => {
           </div>
 
           <div className="bg-[#363636] h-[450px] mt-2 rounded-xl p-8">
-            <h5 className="text-[#B6B6B6] mb-3">{contactDeatils?.contact_form_section?.heading}</h5>
+            {/* <h5 className="text-[#B6B6B6] mb-3">{contactDeatils?.contact_form_section?.heading}</h5> */}
             <h4 className="font-medium mb-3 text-[20px]">{contactDeatils?.contact_form_section?.title}</h4>
             <p className="mb-4">
               {contactDeatils?.contact_form_section?.texts}

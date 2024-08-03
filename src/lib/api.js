@@ -59,6 +59,11 @@ const api = {
     const response = await axios.get(`${baseUrl}/book/${name}`);
     return response;
   },
+
+  getlinkedInPosts : async () => {
+    const response = await axios.get(`${baseUrl}/linkdin-posts`);
+    return response;
+  }
 };
 
 export default api;
