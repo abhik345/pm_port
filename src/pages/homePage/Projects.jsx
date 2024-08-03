@@ -218,6 +218,27 @@ function Projects() {
               ))}
           </div>
         </div>
+        <div className="text-center mt-10">
+    <p className="text-lg text-white font-bold mb-4">Check the book here</p>
+    <div className="flex justify-center gap-4">
+      <button className="flex items-center px-4 py-2 bg-yellow-400 text-black font-semibold rounded-full shadow-lg hover:bg-yellow-500 transition">
+        <img
+          src="/assets/amazon.png"
+          alt="Amazon"
+          className="w-8 h-8 mt-2 mr-1"
+        />
+        <p>Amazon</p>
+      </button>
+      <button className="flex text-black items-center px-4 py-2 bg-white font-semibold rounded-full shadow-lg hover:bg-white transition">
+        <img
+          src="/assets/flipkart.png"
+          alt="Flipkart"
+          className="w-12 h-8 mr-1"
+        />
+        <p>Flipkart</p>
+      </button>
+    </div>
+  </div>
       </div>
     </>
   );
