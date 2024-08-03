@@ -71,6 +71,44 @@ function Projects() {
   console.log(bookData);
 
   useEffect(() => {
+    const animateOddLines = () => {
+      gsap.to(".line_para li:nth-child(odd)", {
+        x: 20,
+        y: 0,
+        repeat: 5,
+        yoyo: true,
+        duration: 0.15,
+        ease: "sine.in",
+        onComplete: function () {
+          gsap.to(this.targets(), {
+            x: 0,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.3)",
+            onComplete: animateOddLines, // Call animateOddLines again when the elastic animation completes
+          });
+        },
+      });
+    };
+
+    const animateEvenLines = () => {
+      gsap.to(".line_para li:nth-child(even)", {
+        x: -20,
+        y: 0,
+        repeat: 5,
+        yoyo: true,
+        duration: 0.15,
+        ease: "sine.in",
+        onComplete: function () {
+          gsap.to(this.targets(), {
+            x: 0,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.3)",
+            onComplete: animateEvenLines, // Call animateEvenLines again when the elastic animation completes
+          });
+        },
+      });
+    };
+
     let ctx = gsap.context(() => {
       gsap.set(".photo:not(:last-child)", {
         clipPath: function () {
@@ -94,26 +132,13 @@ function Projects() {
         animation: animation,
         scrub: 1,
       });
+
+      animateOddLines(); // Initial call to start the odd line animation
+      animateEvenLines(); // Initial call to start the even line animation
     });
 
-    gsap.to(".line_para li:nth-child(odd)", {
-      x: 20,
-      y: 0,
-      repeat: 5,
-      yoyo: true,
-      duration: 0.15,
-      ease: "sine.in",
-      onComplete: function () {
-        gsap.to(this.targets(), {
-          x: 0,
-          duration: 1.5,
-          ease: "elastic.out(1, 0.3)",
-        });
-      },
-    });
-    return () => ctx.revert();
+    return () => ctx.revert(); // Cleanup function
   }, []);
-
   return (
     <>
       <div className="main_project p-10">
