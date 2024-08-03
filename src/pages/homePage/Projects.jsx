@@ -202,7 +202,7 @@ function Projects() {
                           {book?.items.map((item) => (
                             <li
                               key={item.id}
-                              className="content_text v8 underline cursor-pointer mb-1"
+                              className="content_text v8 cursor-pointer mb-1"
                               onClick={() =>
                                 handleClick(book.subtitle, item.title, book.id)
                               }
